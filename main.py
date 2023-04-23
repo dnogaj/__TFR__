@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import os
 import sys
@@ -93,21 +95,29 @@ def draw_static(window, images: list):
 
 
 def draw_dynamic(window, car_obj):
-    car_obj.draw_rotated_car(window)
-    car_obj.control()
-    car_obj.colision(gp.RACE_TRACK_BORDER_MASK)
+    for car in cars:
+        car.draw_rotated_car(window)
+        car.control()
+        car.colision(gp.RACE_TRACK_BORDER_MASK)
     pygame.display.update()
 
 
-car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
+# car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
 run = True
 FPS = 120  # klatki na sekunde
 timer = pygame.time.Clock()  # tworzenie instancji zegara
+cars = []
+cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+cars.append(PlayerCar(rotation_vel=2, start_pos_y=400, start_pos_x=400))
 
 while run:
     timer.tick(FPS)
     draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
-    draw_dynamic(window=gp.GAME_WINDOW, car_obj=car1)
+    draw_dynamic(window=gp.GAME_WINDOW, car_obj=cars)
+    key = pygame.key.get_pressed()
+    if key[pygame.K_c]:
+        cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+        time.sleep(0.5)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
