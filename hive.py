@@ -4,15 +4,19 @@ import numpy
 from game.game_parameters import GameParameters as gp
 import utils
 
+"""
+    Hive Module
+there you can see a step by step creation of the Tre and decision process 
+"""
 
 class Tre:
     def __init__(self, data):
         self.right = None
         self.left = None
         self.data = data
-        self.strength_path = 10
+        self.strength_path = 15
 
-
+    """next_step -> for every object (car) in list of objects (cars) we are checking if it collide with any barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data"""
     def next_step(self, cars):
         cars_new = []
         for car in cars:
@@ -22,9 +26,9 @@ class Tre:
             else:
                 decision = self.get_decision(car.path.copy())
                 car.turn = decision
-                print(decision, car.turn)
+                #print(decision, car.turn)
                 car.path.append(decision)
-                print(car.path)
+                #print(car.path)
                 cars_new.append(car)
         return cars_new
 

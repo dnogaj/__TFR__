@@ -34,7 +34,7 @@ class AbstractCar:
         print(self.colide)
         return self.colide
 
-    def __init__(self, rotation_vel, start_pos_x, start_pos_y):
+    def __init__(self, rotation_vel, start_pos_x, start_pos_y, max_velocity):
         self.x_cord = start_pos_x
         self.y_cord = start_pos_y
         self.pos_top_left = (
@@ -43,7 +43,7 @@ class AbstractCar:
         )  # zapamiętaj idioto że init wykonuje się tylko raz więc nie przypisuj w nim zmiennych które chcesz żeby się zmieniały
         self.image = self.IMG
         self.velocity = 0
-        self.max_velocity = 2
+        self.max_velocity = max_velocity
         self.rotation_vel = rotation_vel
         self.angle = 84
         self.current_image = None  # BADZIEW ALERT
@@ -79,8 +79,8 @@ class AbstractCar:
 class ComputerCar(AbstractCar):
     IMG = gp.CAR_IMG
 
-    def __init__(self, rotation_vel, start_pos_x, start_pos_y):
-        super().__init__(rotation_vel, start_pos_x, start_pos_y)
+    def __init__(self, rotation_vel, start_pos_x, start_pos_y, max_velocity):
+        super().__init__(rotation_vel, start_pos_x, start_pos_y, max_velocity)
         self.turn = 0
 
     def control(self):
@@ -134,7 +134,7 @@ timer = pygame.time.Clock()  # tworzenie instancji zegara
 # player_cars = []
 # player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
 cars2 = []
-cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200, max_velocity=10))
 
 size = gp.RACE_TRACK_IMG.get_size()
 ants = Ants(size)
@@ -152,7 +152,7 @@ while run:
     cars2 = tre.next_step(cars2)
     # print(cars2[0].colide)
     if len(cars2) < 1000:
-        cars2.append(ComputerCar(rotation_vel=3, start_pos_y=200, start_pos_x=250))
+        cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=250, max_velocity=10))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
