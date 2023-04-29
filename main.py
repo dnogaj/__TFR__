@@ -5,6 +5,7 @@ import os
 import sys
 import math
 
+from hive import Ants, Tre
 from utils import resize_img, blit_rotate_center
 from game.game_parameters import GameParameters as gp
 
@@ -25,9 +26,13 @@ class AbstractCar:
     def colision(self, track_mask, x=0, y=0):
         offset = int(self.x_cord), int(self.y_cord)
         car_mask = pygame.mask.from_surface(self.current_image)
-        collide = track_mask.overlap(car_mask, offset)
-        print(collide)
-        return collide
+        self.colide = track_mask.overlap(car_mask, offset)
+        # print(self.colide)
+        return self.colide
+
+    def get_colide(self):
+        print(self.colide)
+        return self.colide
 
     def __init__(self, rotation_vel, start_pos_x, start_pos_y):
         self.x_cord = start_pos_x
@@ -42,6 +47,9 @@ class AbstractCar:
         self.rotation_vel = rotation_vel
         self.angle = 84
         self.current_image = None  # BADZIEW ALERT
+        self.colide = None
+        self.scent_of_death = []
+        self.path = []
 
         """W takim układzie współrzędnych, kąt zero stopni odpowiada orientacji obiektu wzdłuż osi X,
          z "górą" obiektu skierowaną w górę ekranu (w kierunku przeciwnym do rosnącej wartości na osi Y)."""
@@ -69,7 +77,23 @@ class AbstractCar:
 
 
 class ComputerCar(AbstractCar):
-    pass
+    IMG = gp.CAR_IMG
+
+    def __init__(self, rotation_vel, start_pos_x, start_pos_y):
+        super().__init__(rotation_vel, start_pos_x, start_pos_y)
+        self.turn = 0
+
+    def control(self):
+        if self.turn == 0:
+            pass
+        elif self.turn == 1:
+            super().rotate(right=True)
+        elif self.turn == -1:
+            super().rotate(left=True)
+        super().move()
+
+    def set_turn(self, turn):
+        self.turn = turn
 
 
 class PlayerCar(AbstractCar):
@@ -95,30 +119,45 @@ def draw_static(window, images: list):
 
 
 def draw_dynamic(window, car_obj):
-    for car in cars:
+    for car in all_cars:
         car.draw_rotated_car(window)
         car.control()
         car.colision(gp.RACE_TRACK_BORDER_MASK)
+
     pygame.display.update()
 
 
 # car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
 run = True
-FPS = 120  # klatki na sekunde
+FPS = 300  # klatki na sekunde
 timer = pygame.time.Clock()  # tworzenie instancji zegara
-cars = []
-cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
-cars.append(PlayerCar(rotation_vel=2, start_pos_y=400, start_pos_x=400))
+# player_cars = []
+# player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+cars2 = []
+cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+
+size = gp.RACE_TRACK_IMG.get_size()
+ants = Ants(size)
+tre = Tre(0)
 
 while run:
     timer.tick(FPS)
+    all_cars = cars2
     draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
-    draw_dynamic(window=gp.GAME_WINDOW, car_obj=cars)
-    key = pygame.key.get_pressed()
-    if key[pygame.K_c]:
-        cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
-        time.sleep(0.5)
+    draw_dynamic(window=gp.GAME_WINDOW, car_obj=all_cars)
+    # key = pygame.key.get_pressed()
+    # if key[pygame.K_c]:
+    #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+    #     time.sleep(0.5)
+    cars2 = tre.next_step(cars2)
+    # print(cars2[0].colide)
+    if len(cars2) < 100:
+        cars2.append(ComputerCar(rotation_vel=3, start_pos_y=200, start_pos_x=250))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            # ants.show_matrix()
             pygame.quit()
             sys.exit()
+
+
