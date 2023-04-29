@@ -18,7 +18,7 @@ class Tre:
                 #print(car.colide)
                 self.purge_path(car.path)
             else:
-                decision = self.get_decision(car.path)
+                decision = self.get_decision(car.path.copy())
                 car.turn = decision
                 print(decision, car.turn)
                 car.path.append(decision)
