@@ -4,23 +4,29 @@ import numpy
 from game.game_parameters import GameParameters as gp
 import utils
 
+"""
+Hive module
+there is a decision process as well as creating the tree
+"""
 
 class Tre:
     def __init__(self, data):
         self.right = None
         self.left = None
         self.data = data
-        self.strength_path = 10
 
 
+    """next_step -> for every object (car) in list of objects (cars) we are checking if it collide with any barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data"""
     def next_step(self, cars):
         cars_new = []
         for car in cars:
             if car.colide:
                 # print(car.colide)
                 self.purge_path(car.path)
+                pass
             else:
                 decision = self.get_decision(car.path.copy())
+                #decision = random.choices([-1, 1], [1, 1], k=1)[0]
                 car.turn = decision
                 print(decision, car.turn)
                 car.path.append(decision)
@@ -37,9 +43,9 @@ class Tre:
         # print(self.left.data)
         # print(self.right.data)
         if decision == -1:
-            self.left.data += self.strength_path
+            self.left.data += 1
         elif decision == 1:
-            self.right.data += self.strength_path
+            self.right.data += 1
         return decision
 
     def get_decision(self, path):
@@ -66,20 +72,20 @@ class Tre:
             next_node = path.pop(0)
             if next_node == -1:
                 self.left.purge_path(path)
-                self.data -= self.strength_path
+                self.data -= 1
             elif next_node == 1:
                 self.right.purge_path(path)
-                self.data -= self.strength_path
+                self.data -= 1
 
 
 # tree = Tre(1)
-# mypath = []
-# # tree.right = Tre(2)
-# # tree.left = Tre(2)
-# # tree.right.right = Tre(33)
-# # tree.right.left = Tre(33)
-# # tree.left.right = Tre(3)
-# # tree.left.left = Tre(3)
+# mypath = [1, 1]
+# tree.right = Tre(2)
+# tree.left = Tre(2)
+# tree.right.right = Tre(33)
+# tree.right.left = Tre(33)
+# tree.left.right = Tre(3)
+# tree.left.left = Tre(3)
 # print(tree.get_decision(mypath))
 
 

@@ -138,7 +138,7 @@ cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
 
 size = gp.RACE_TRACK_IMG.get_size()
 ants = Ants(size)
-tre = Tre(0)
+tre = Tre(1)
 
 while run:
     timer.tick(FPS)
