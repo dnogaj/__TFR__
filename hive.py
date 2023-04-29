@@ -12,6 +12,7 @@ class Tre:
         self.data = data
         self.strength_path = 10
 
+
     def next_step(self, cars):
         cars_new = []
         for car in cars:
