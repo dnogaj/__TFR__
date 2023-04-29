@@ -10,12 +10,13 @@ class Tre:
         self.right = None
         self.left = None
         self.data = data
+        self.strength_path = 10
 
     def next_step(self, cars):
         cars_new = []
         for car in cars:
             if car.colide:
-                #print(car.colide)
+                # print(car.colide)
                 self.purge_path(car.path)
             else:
                 decision = self.get_decision(car.path.copy())
@@ -32,12 +33,12 @@ class Tre:
         if self.right is None:
             self.right = Tre(1)
         decision = random.choices([-1, 1], [self.left.data, self.right.data], k=1)[0]
-        #print(self.left.data)
-        #print(self.right.data)
+        # print(self.left.data)
+        # print(self.right.data)
         if decision == -1:
-            self.left.data += 1
+            self.left.data += self.strength_path
         elif decision == 1:
-            self.right.data += 1
+            self.right.data += self.strength_path
         return decision
 
     def get_decision(self, path):
@@ -64,10 +65,10 @@ class Tre:
             next_node = path.pop(0)
             if next_node == -1:
                 self.left.purge_path(path)
-                self.data -= 1
+                self.data -= self.strength_path
             elif next_node == 1:
                 self.right.purge_path(path)
-                self.data -= 1
+                self.data -= self.strength_path
 
 
 # tree = Tre(1)
@@ -155,7 +156,7 @@ class Ants:
                 # car.turn = round(random.uniform(-1, 1))
                 # car.turn = random.choice([-1, 1])
                 car.turn = self.decide(utils.position_fix(car.x_cord), utils.position_fix(car.y_cord), car.angle)
-                #car.turn = self.get_decision(car.path)
+                # car.turn = self.get_decision(car.path)
                 # car.path.append(car.turn)
                 carsnew.append(car)
                 x = utils.position_fix(car.x_cord)

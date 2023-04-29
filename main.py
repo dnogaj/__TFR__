@@ -151,7 +151,7 @@ while run:
     #     time.sleep(0.5)
     cars2 = tre.next_step(cars2)
     # print(cars2[0].colide)
-    if len(cars2) < 100:
+    if len(cars2) < 1000:
         cars2.append(ComputerCar(rotation_vel=3, start_pos_y=200, start_pos_x=250))
 
     for event in pygame.event.get():
