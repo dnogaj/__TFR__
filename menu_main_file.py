@@ -110,6 +110,7 @@ class Menu:
 
     def menus(self):
         #main_menu = self.main_menu
+        OPTION = 1                                         ##  OPTION -> to change placement    (ALGO/SOLO)
         run = True
         while run:
             #screen.fill('light blue')
@@ -129,11 +130,18 @@ class Menu:
                     self.text = self.font.render(f'Button {self.menu_command} pressed!', True, 'black')
                     #print(self.menu_command)
                     self.screen.blit(self.text, (150, 100))
-                    if self.menu_command == 1:
+                    if self.menu_command == 2:
+                        OPTION = 2
+                    if self.menu_command == 1 and OPTION == 1:
                         pygame.display.flip()
-                        #pygame.quit()
                         game = gmf.Game()
-                        game.play()
+                        game.play_algo()
+                        run = False
+                    elif self.menu_command == 1 and OPTION == 2:
+                        pygame.display.flip()
+                        game = gmf.Game()
+                        game.play_solo()
+                        run = False
 
 
             for event in pygame.event.get():

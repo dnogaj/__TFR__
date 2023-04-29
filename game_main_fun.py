@@ -4,6 +4,7 @@ import pygame
 import os
 import sys
 import math
+import keyboard
 
 from hive import Ants, Tre
 from utils import resize_img, blit_rotate_center
@@ -102,10 +103,10 @@ class Game:
 
 
     class PlayerCar(AbstractCar):
-        IMG = gp.CAR_IMG
+        IMG = gp.CAR_IM4G
 
-        def __init__(self, rotation_vel, start_pos_x, start_pos_y):
-            super().__init__(rotation_vel, start_pos_x, start_pos_y)
+        def __init__(self, rotation_vel, start_pos_x, start_pos_y, max_velocity):
+            super().__init__(rotation_vel, start_pos_x, start_pos_y, max_velocity)
 
         def control(self):
             keys = pygame.key.get_pressed()
@@ -138,7 +139,7 @@ class Game:
         pygame.display.update()
 
 
-    def play(self):
+    def play_algo(self):
         # car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
         run = True
         FPS = 300  # klatki na sekunde
@@ -148,8 +149,8 @@ class Game:
         cars2 = []
         cars2.append(self.ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200, max_velocity=10))            #self
 
-        size = gp.RACE_TRACK_IMG.get_size()
-        ants = Ants(size)
+        #size = gp.RACE_TRACK_IMG.get_size()        #unused
+        #ants = Ants(size)                          #unused
         tre = Tre(1)
 
         while run:
@@ -172,5 +173,60 @@ class Game:
                     pygame.quit()
                     sys.exit()
 
+    def play_solo(self):
+        run = True
+        FPS = 60  # klatki na sekunde
+        timer = pygame.time.Clock()  # tworzenie instancji zegara
+
+        player_car = []
+        player_car.append(self.PlayerCar(rotation_vel=1, start_pos_y=200, start_pos_x=200, max_velocity=1))
+
+        while run:
+            timer.tick(FPS)
+            self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
+            self.draw_dynamic(window=gp.GAME_WINDOW, all_cars=player_car)
+            player_car[0].control()
+            print(player_car[0].colide)
+            if player_car[0].colide is not None:
+                self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                #gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+                run = False
+                break
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    # ants.show_matrix()
+                    pygame.quit()
+                    sys.exit()
 
 
+        #time.sleep(10)
+        #end_button = True
+        #print(pygame.event.get())
+
+
+        ##NOT WORKIN - im pissed little bit -> pbly small mistake
+        while True:
+            self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+            #gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+            if keyboard.is_pressed('enter') or keyboard.is_pressed('esc'):
+                break
+
+
+
+
+        # gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+        # while end_button:
+        #     #if pygame.event.get():
+        #         #end_button = False
+        #     for event in pygame.event.get():
+        #         print(event.type)
+        #         # print(event.key)
+        #         if event.type == 379 or event.type == 1024:
+        #             end_button = False
+
+        # for event in pygame.event.get():
+        #     if event.type == QUIT:
+        #         return
+        #     elif event.type == KEYDOWN:
+        #         if event.key == K_ESCAPE:
+        #             return

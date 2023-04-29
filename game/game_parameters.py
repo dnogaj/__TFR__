@@ -9,11 +9,15 @@ class GameParameters:
     RACE_TRACK_PATH = os.path.join("images", "racetrack1.png")
     RACE_TRACK_BORDER_PATH = os.path.join("images", "racetrack-borders.png")
     CAR_PATH = os.path.join("images", "carYellow.png")
+    CAR_PATH2 = os.path.join("images", "car2.png")
+    RACE_END_DEAD_PATH = os.path.join("images", "InkedMcQueen_DEAD_cp.jpg")
 
     RACE_TRACK_BORDER = resize_img(pygame.image.load(RACE_TRACK_BORDER_PATH), 1.1)
     RACE_TRACK_IMG = resize_img(pygame.image.load(RACE_TRACK_PATH), 1.1)
     CAR_IMG = resize_img(pygame.image.load(CAR_PATH), 0.04)
+    CAR_IM4G = resize_img(pygame.image.load(CAR_PATH2), 0.04)
     RACE_TRACK_BORDER_MASK = pygame.mask.from_surface(RACE_TRACK_BORDER)
+    RACE_END_DEAD = resize_img(pygame.image.load(RACE_END_DEAD_PATH), 1.1)
 
     WIDTH, HIGH = RACE_TRACK_IMG.get_width(), RACE_TRACK_IMG.get_height()
     GAME_WINDOW = pygame.display.set_mode((WIDTH, HIGH))
@@ -21,3 +25,4 @@ class GameParameters:
     IMG_CORD_X = 0
     IMG_CORD_Y = 0
     IMAGES_AND_SIZES = [(RACE_TRACK_IMG, (IMG_CORD_X, IMG_CORD_Y))]
+    IMAGES_AND_SIZES_DEAD = [(RACE_END_DEAD, (IMG_CORD_X, IMG_CORD_Y))]
