@@ -188,10 +188,16 @@ class Game:
             player_car[0].control()
             print(player_car[0].colide)
             if player_car[0].colide is not None:
-                self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                #self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
                 #gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+                while run:
+                    self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                    pygame.display.update()
+                    # gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+                    if keyboard.is_pressed('enter') or keyboard.is_pressed('esc'):          # Jeżeli chcesz grać dalej to enter, jeżeli wyjść to esc
+                        run = False
                 run = False
-                break
+                #break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     # ants.show_matrix()
@@ -205,11 +211,11 @@ class Game:
 
 
         ##NOT WORKIN - im pissed little bit -> pbly small mistake
-        while True:
-            self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
-            #gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
-            if keyboard.is_pressed('enter') or keyboard.is_pressed('esc'):
-                break
+        # while True:
+        #     self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+        #     #gp.GAME_WINDOW.blit(gp.RACE_END_DEAD, dest=(0, 0))
+        #     if keyboard.is_pressed('enter') or keyboard.is_pressed('esc'):
+        #         break
 
 
 

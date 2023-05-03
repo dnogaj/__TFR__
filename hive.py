@@ -17,7 +17,7 @@ class Tre:
         self.strength_path = 15
 
     def next_step(self, cars):
-        """next_step -> for every object (car) in list of objects (cars) we are checking if it collide with any
+        """next_step -> for every object (car) in list of objects (cars) we are checking if it collides with any
         barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data"""
         cars_new = []
         for car in cars:
