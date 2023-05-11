@@ -262,7 +262,7 @@ class Ancestors:
         self.set_of_sets_all = []
         self.max_sets = 10
         self.set_of_sets = []
-        self.base_unfollow_probability = 4 / 5  # always less than 1
+        self.base_unfollow_probability = 1 / 2  # always less than 1
 
     def next_step(self, cars):
         cars_new = []
@@ -278,13 +278,14 @@ class Ancestors:
         return cars_new
 
     def decide(self, car):
-        decision = 0
-        if len(car.path) < len(car.follow_path):
+        # decision = 0
+        # we decide if we want to abandon righteous path of our ancestors
+
+        if len(car.path) < len(car.follow_path) and car.unfollow_ancestor_path:
             if random.choices([0, 1], [car.jump, 1 - car.jump], k=1)[0]:
-                # we decide if we want to abandon righteous path of our ancestors
                 car.turn = car.follow_path[len(car.path)]
             else:
-                car.path = car.follow_path
+                car.unfollow_ancestor_path = True
                 car.turn = random.choice([-1, 1])
         else:
             car.turn = random.choice([-1, 1])

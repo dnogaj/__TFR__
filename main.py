@@ -52,7 +52,7 @@ class AbstractCar:
         self.path = []
         self.follow_path = []
         self.jump = 0.1
-        self.jump_old = 0.1
+        self.unfollow_ancestor_path = False
         """W takim układzie współrzędnych, kąt zero stopni odpowiada orientacji obiektu wzdłuż osi X,
          z "górą" obiektu skierowaną w górę ekranu (w kierunku przeciwnym do rosnącej wartości na osi Y)."""
 
@@ -167,7 +167,8 @@ tre = Tre(1)
 ancestors = Ancestors()
 
 for i in range(1000):
-    cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2))
+    car = ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2)
+    cars2.append(car)
 
 while run:
     timer.tick(FPS)
