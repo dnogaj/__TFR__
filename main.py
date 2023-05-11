@@ -52,7 +52,7 @@ class AbstractCar:
         self.path = []
         self.follow_path = []
         self.jump = 0.1
-        self.unfollow_ancestor_path = False
+        self.follow_ancestor_path = True
         """W takim układzie współrzędnych, kąt zero stopni odpowiada orientacji obiektu wzdłuż osi X,
          z "górą" obiektu skierowaną w górę ekranu (w kierunku przeciwnym do rosnącej wartości na osi Y)."""
 
@@ -139,7 +139,6 @@ cars2 = []
 cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200, max_velocity=2))
 cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=200, max_velocity=10))
 
-
 size = gp.RACE_TRACK_IMG.get_size()
 ants = Ants(size)
 tre = Tre(1)
@@ -167,7 +166,7 @@ tre = Tre(1)
 ancestors = Ancestors()
 
 for i in range(1000):
-    car = ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2)
+    car = ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5)
     cars2.append(car)
 
 while run:
@@ -182,13 +181,13 @@ while run:
     cars2 = ancestors.next_step(cars2)
     # print(cars2[0].colide)
     if len(cars2) == 0:
-        for i in range(200):
-            cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2))
-        #print(ancestors.set_of_sets_all)
+        for i in range(500):
+            cars2.append(ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5))
+        # print(ancestors.set_of_sets_all)
         ancestors.reduce_sets()
         ancestors.who_to_follow(cars2)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            #ants.show_matrix()
+            # ants.show_matrix()
             pygame.quit()
             sys.exit()

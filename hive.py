@@ -260,9 +260,9 @@ class Ants:
 class Ancestors:
     def __init__(self):
         self.set_of_sets_all = []
-        self.max_sets = 10
+        self.max_sets = 50
         self.set_of_sets = []
-        self.base_unfollow_probability = 1 / 2  # always less than 1
+        self.base_unfollow_probability = 9 / 10  # always less than 1
 
     def next_step(self, cars):
         cars_new = []
@@ -281,11 +281,11 @@ class Ancestors:
         # decision = 0
         # we decide if we want to abandon righteous path of our ancestors
 
-        if len(car.path) < len(car.follow_path) and car.unfollow_ancestor_path:
+        if len(car.path) < len(car.follow_path) and car.follow_ancestor_path:
             if random.choices([0, 1], [car.jump, 1 - car.jump], k=1)[0]:
                 car.turn = car.follow_path[len(car.path)]
             else:
-                car.unfollow_ancestor_path = True
+                car.follow_ancestor_path = False
                 car.turn = random.choice([-1, 1])
         else:
             car.turn = random.choice([-1, 1])
