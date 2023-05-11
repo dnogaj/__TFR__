@@ -27,6 +27,6 @@ def blit_rotate_center(surf, image, top_left, angle):
 
 
 def position_fix(cord):
-    scale = 2  # zrobic globalna zmienna (ale to potem)
+    scale = 2
     cord = int(cord / scale)
     return cord

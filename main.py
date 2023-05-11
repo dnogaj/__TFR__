@@ -5,7 +5,7 @@ import os
 import sys
 import math
 
-from hive import Ants, Tre
+from hive import Ants, Tre, Ancestors
 from utils import resize_img, blit_rotate_center
 from game.game_parameters import GameParameters as gp
 
@@ -50,7 +50,9 @@ class AbstractCar:
         self.colide = None
         self.scent_of_death = []
         self.path = []
-
+        self.follow_path = []
+        self.jump = 0.1
+        self.jump_old = 0.1
         """W takim układzie współrzędnych, kąt zero stopni odpowiada orientacji obiektu wzdłuż osi X,
          z "górą" obiektu skierowaną w górę ekranu (w kierunku przeciwnym do rosnącej wartości na osi Y)."""
 
@@ -134,11 +136,38 @@ timer = pygame.time.Clock()  # tworzenie instancji zegara
 # player_cars = []
 # player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
 cars2 = []
-cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200, max_velocity=10))
+cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200, max_velocity=2))
+cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=200, max_velocity=10))
+
 
 size = gp.RACE_TRACK_IMG.get_size()
 ants = Ants(size)
 tre = Tre(1)
+#
+# while run:
+#     timer.tick(FPS)
+#     all_cars = cars2
+#     draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
+#     draw_dynamic(window=gp.GAME_WINDOW, car_obj=all_cars)
+#     # key = pygame.key.get_pressed()
+#     # if key[pygame.K_c]:
+#     #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+#     #     time.sleep(0.5)
+#     cars2 = tre.next_step(cars2)
+#     # print(cars2[0].colide)
+#     if len(cars2) < 1000:
+#         cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=250, max_velocity=10))
+#
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             #ants.show_matrix()
+#             pygame.quit()
+#             sys.exit()
+
+ancestors = Ancestors()
+
+for i in range(1000):
+    cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2))
 
 while run:
     timer.tick(FPS)
@@ -149,15 +178,16 @@ while run:
     # if key[pygame.K_c]:
     #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
     #     time.sleep(0.5)
-    cars2 = tre.next_step(cars2)
+    cars2 = ancestors.next_step(cars2)
     # print(cars2[0].colide)
-    if len(cars2) < 1000:
-        cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=250, max_velocity=10))
-
+    if len(cars2) == 0:
+        for i in range(200):
+            cars2.append(ComputerCar(rotation_vel=2, start_pos_y=200, start_pos_x=250, max_velocity=2))
+        #print(ancestors.set_of_sets_all)
+        ancestors.reduce_sets()
+        ancestors.who_to_follow(cars2)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            # ants.show_matrix()
+            #ants.show_matrix()
             pygame.quit()
             sys.exit()
-
-
