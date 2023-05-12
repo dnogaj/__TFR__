@@ -11,7 +11,6 @@ from utils import detect_stat_dyn_collide
 from game.game_parameters import GameParameters as gp
 from game.cars import PlayerCar, ComputerCar
 
-#from menu.main_menu import MainMenu
 
 
 class Game:
@@ -26,7 +25,8 @@ class Game:
             window.blit(image, position)
 
     @staticmethod
-    def draw_static_algo2(window, images: list, timer, generation_counter):  # self
+    def draw_static_algo2(window, images: list, timer, generation_counter):
+        """draw_static_algo2 -> draws board (track and satatic fragments) for play_algo_v2"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
@@ -41,7 +41,8 @@ class Game:
         # self.screen.blit(self.text, (150, 100))
 
     @staticmethod
-    def draw_static_algo1(window, images: list, timer):  # self
+    def draw_static_algo1(window, images: list, timer):
+        """draw_static_algo1 -> draws board (track and satatic fragments) for play_algo"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
@@ -50,13 +51,27 @@ class Game:
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
 
     @staticmethod
-    def draw_static_solo(window, images: list, timer):  # self
+    def draw_static_solo(window, images: list, timer):
+        """draw_static_solo -> draws board (track and satatic fragments) for play_solo"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font('freesansbold.ttf', 32)
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, 'white')
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
+
+    @staticmethod
+    def draw_static_info(window, images: list):
+        """draw_static_info -> draws information how to start game and how to exit it"""
+        window.fill((29, 130, 34))
+        for image, position in images:
+            window.blit(image, position)
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render("To start game press ENTER", True, 'white')
+        gp.GAME_WINDOW.blit(text, (800, 160))
+        text = font.render("To exit game press ESC", True, 'white')
+        gp.GAME_WINDOW.blit(text, (800, 200))
+
 
     @staticmethod
     def draw_dynamic(window, all_cars):
@@ -70,6 +85,7 @@ class Game:
 
     @staticmethod
     def play_algo():
+        """play_algo -> first algorithm that overcomes the track by itself"""
         # car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
         run = True
         FPS = 300  # klatki na sekunde
@@ -102,11 +118,15 @@ class Game:
                     ComputerCar(rotation_vel=10, start_pos_y=380, start_pos_x=750, max_velocity=10)
                 )  # self
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    # ants.show_matrix()
-                    pygame.quit()
-                    sys.exit()
+            if keyboard.is_pressed("esc"):  # esc closing application
+                run = False
+
+            Game.exit_game()
+            # for event in pygame.event.get():
+            #     if event.type == pygame.QUIT:
+            #         # ants.show_matrix()
+            #         pygame.quit()
+            #         sys.exit()
 
     @staticmethod
     def exit_game():
@@ -117,6 +137,7 @@ class Game:
 
     @staticmethod
     def play_solo():
+        """play_solo -> main loop function for driving a car and trying to cross the finish line"""
         run = True
         FPS = 60  # klatki na sekunde
         timer = pygame.time.Clock()  # tworzenie instancji zegara
@@ -125,6 +146,16 @@ class Game:
         player_car.append(
             PlayerCar(rotation_vel=1, start_pos_y=380, start_pos_x=750, max_velocity=1)
         )
+
+        # while True:
+        #     timer.tick(FPS)
+        #     Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
+        #     keys = pygame.key.get_pressed()
+        #     #time.sleep(2)
+        #     if keys[pygame.K_KP_ENTER] or keys[pygame.K_SPACE]:
+        #         break
+        # TU MIAŁ BYĆ EKRAN NACIŚNIJ PRZYCISK ABY ZACZĄĆ
+
         stime = time.time()
         while run:
             timer.tick(FPS)
@@ -142,12 +173,12 @@ class Game:
                 print("Wygrałeś")
             if player_car[0].collide is not None:
                 while run:
-                    Game.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                    Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
                     pygame.display.update()
                     Game.exit_game()
-                    if keyboard.is_pressed("enter") or keyboard.is_pressed(
-                        "esc"
-                    ):  # Jeżeli chcesz grać dalej to enter, jeżeli wyjść to esc
+                    if keyboard.is_pressed("enter"):
+                        Game.play_solo()
+                    elif keyboard.is_pressed("esc"):
                         run = False
 
             Game.exit_game()
@@ -155,6 +186,7 @@ class Game:
 
     @staticmethod
     def play_algo_v2():
+        """play_algo_v2 -> second algorithm that overcomes the track by itself"""
         ancestors = Ancestors()
 
         run = True
