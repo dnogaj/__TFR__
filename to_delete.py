@@ -1,3 +1,5 @@
+# poprzednia nazwa -> to_delete.py
+
 import time
 
 import pygame
@@ -181,6 +183,7 @@ class Game:
         player_car = []
         player_car.append(self.PlayerCar(rotation_vel=1, start_pos_y=200, start_pos_x=200, max_velocity=1))
 
+        #timer_game =time.time()  # todo dodać wyświetlający się timer
         while run:
             timer.tick(FPS)
             self.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)

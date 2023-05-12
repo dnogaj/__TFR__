@@ -21,7 +21,7 @@ class Tre:
         barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data"""
         cars_new = []
         for car in cars:
-            if car.colide:
+            if car.collide:
                 # print(car.colide)
                 self.purge_path(car.path)
             else:
@@ -80,7 +80,6 @@ class Tre:
                 self.right.purge_path(path)
                 self.data -= self.strength_path
 
-
 # tree = Tre(1)
 # mypath = []
 # # tree.right = Tre(2)
@@ -90,6 +89,63 @@ class Tre:
 # # tree.left.right = Tre(3)
 # # tree.left.left = Tre(3)
 # print(tree.get_decision(mypath))
+
+
+
+
+
+class Ancestors:
+    def __init__(self):
+        self.set_of_sets_all = []
+        self.max_sets = 50
+        self.set_of_sets = []
+        self.base_unfollow_probability = 9 / 10  # always less than 1
+
+    def next_step(self, cars):
+        cars_new = []
+        for car in cars:
+            if car.collide:
+                if car.path:
+                    self.set_of_sets_all.append(car.path)
+            else:
+                self.decide(car)  # sets car turn
+                car.path.append(car.turn)
+                car.jump = car.jump / self.base_unfollow_probability
+                cars_new.append(car)
+        return cars_new
+
+    def decide(self, car):
+        # decision = 0
+        # we decide if we want to abandon righteous path of our ancestors
+
+        if len(car.path) < len(car.follow_path) and car.follow_ancestor_path:
+            if random.choices([0, 1], [car.jump, 1 - car.jump], k=1)[0]:
+                car.turn = car.follow_path[len(car.path)]
+            else:
+                car.follow_ancestor_path = False
+                car.turn = random.choice([-1, 1])
+        else:
+            car.turn = random.choice([-1, 1])
+
+    def reduce_sets(self):
+        self.set_of_sets = sorted(self.set_of_sets_all, key=len, reverse=True)[0:self.max_sets].copy()
+        self.set_of_sets_all = []
+
+    def who_to_follow(self, cars):
+        print("======================")
+        for tmp_set in self.set_of_sets:
+            print(len(tmp_set), "  ", tmp_set)
+        for car in cars:
+            car.follow_path = random.choice(self.set_of_sets)
+            #car.follow_path = [0]
+            car.jump = self.base_unfollow_probability ** len(car.follow_path)
+
+
+
+
+
+
+
 
 
 class Ants:
