@@ -3,7 +3,7 @@ import random
 import numpy
 from game.game_parameters import GameParameters as gp
 import utils
-
+import pickle
 """
     Hive Module
 there you can see a step by step creation of the Tre and decision process 
@@ -76,6 +76,42 @@ class Tre:
             elif next_node == 1:
                 self.right.purge_path(path)
                 self.data -= self.strength_path
+
+    def save_path(self):
+        if self.left is None or self.right is None:
+            bbbagno = []
+            return bbbagno
+        elif self.left.data == self.right.data:
+            bbbagno = []
+            return bbbagno
+        else:
+            if self.left.data > self.right.data:
+                bagno = -1
+                #print(self.left.save_path())
+                tmp_list = self.left.save_path()
+                tmp_list.append(bagno)
+                return tmp_list
+            if self.left.data < self.right.data:
+                bagno = 1
+                #print(self.right.save_path())
+                tmp_list = self.right.save_path()
+                tmp_list.append(bagno)
+                return tmp_list
+    def save_path_to_file(self):
+        path = self.save_path()
+        path.reverse()
+
+        # open a file for writing
+        with open("tre_path.txt", "w") as f:
+            # write the list to the file
+            for item in path:
+                f.write(str(item) + "\n")
+
+    def save_path_to_file_pickle(self):
+        path = self.save_path()
+        path.reverse()
+        with open("tre_path.pkl", "wb") as f:
+            pickle.dump(path, f)
 
 
 # tree = Tre(1)
@@ -260,7 +296,7 @@ class Ants:
 class Ancestors:
     def __init__(self):
         self.set_of_sets_all = []
-        self.max_sets = 50
+        self.max_sets = 100
         self.set_of_sets = []
         self.base_unfollow_probability = 9 / 10  # always less than 1
 
@@ -300,5 +336,5 @@ class Ancestors:
             print(len(tmp_set), "  ", tmp_set)
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
-            #car.follow_path = [0]
+            # car.follow_path = [0]
             car.jump = self.base_unfollow_probability ** len(car.follow_path)

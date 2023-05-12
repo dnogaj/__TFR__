@@ -142,32 +142,6 @@ cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=200, max_
 size = gp.RACE_TRACK_IMG.get_size()
 ants = Ants(size)
 tre = Tre(1)
-#
-# while run:
-#     timer.tick(FPS)
-#     all_cars = cars2
-#     draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
-#     draw_dynamic(window=gp.GAME_WINDOW, car_obj=all_cars)
-#     # key = pygame.key.get_pressed()
-#     # if key[pygame.K_c]:
-#     #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
-#     #     time.sleep(0.5)
-#     cars2 = tre.next_step(cars2)
-#     # print(cars2[0].colide)
-#     if len(cars2) < 1000:
-#         cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=250, max_velocity=10))
-#
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             #ants.show_matrix()
-#             pygame.quit()
-#             sys.exit()
-
-ancestors = Ancestors()
-
-for i in range(1000):
-    car = ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5)
-    cars2.append(car)
 
 while run:
     timer.tick(FPS)
@@ -178,16 +152,43 @@ while run:
     # if key[pygame.K_c]:
     #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
     #     time.sleep(0.5)
-    cars2 = ancestors.next_step(cars2)
+    cars2 = tre.next_step(cars2)
     # print(cars2[0].colide)
-    if len(cars2) == 0:
-        for i in range(500):
-            cars2.append(ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5))
-        # print(ancestors.set_of_sets_all)
-        ancestors.reduce_sets()
-        ancestors.who_to_follow(cars2)
+    if len(cars2) < 1000:
+        cars2.append(ComputerCar(rotation_vel=10, start_pos_y=200, start_pos_x=250, max_velocity=10))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            # ants.show_matrix()
+            print("SAVED PATH:")
+            tre.save_path_to_file()
+            tre.save_path_to_file_pickle()
             pygame.quit()
             sys.exit()
+
+# ancestors = Ancestors()
+#
+# for i in range(1000):
+#     car = ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5)
+#     cars2.append(car)
+#
+# while run:
+#     timer.tick(FPS)
+#     all_cars = cars2
+#     draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
+#     draw_dynamic(window=gp.GAME_WINDOW, car_obj=all_cars)
+#     # key = pygame.key.get_pressed()
+#     # if key[pygame.K_c]:
+#     #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
+#     #     time.sleep(0.5)
+#     cars2 = ancestors.next_step(cars2)
+#     # print(cars2[0].colide)
+#     if len(cars2) == 0:
+#         for i in range(500):
+#             cars2.append(ComputerCar(rotation_vel=8, start_pos_y=200, start_pos_x=250, max_velocity=5))
+#         # print(ancestors.set_of_sets_all)
+#         ancestors.reduce_sets()
+#         ancestors.who_to_follow(cars2)
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             pygame.quit()
+#             sys.exit()
