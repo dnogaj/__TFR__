@@ -98,7 +98,9 @@ class Game:
             # print(player_car[0].collide)
             car_pos = (player_car[0].x_cord, player_car[0].y_cord)
             finish_pos = (gp.FINISH_X_CORD, gp.FINISH_Y_CORD)
-            collision_with_meta = detect_stat_dyn_collide(gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos)
+            collision_with_meta = detect_stat_dyn_collide(
+                gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos
+            )
             etime = time.time()
             if collision_with_meta and (etime - stime) > 2.0:
                 print("finish line !!!")

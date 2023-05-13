@@ -23,6 +23,10 @@ class AbstractCar:
         self.scent_of_death = []
         self.path = []
 
+        self.follow_path = []
+        self.jump = 0.1
+        self.follow_ancestor_path = True
+
     """Methods which are responsible for moving and rotating car objects. In pygame coordinate system, an angle of
      zero degrees corresponds to the orientation of the object along the x-axis, with the "top" of the object pointing
      up the screen (in opposite direction to growing y-axis values)"""
