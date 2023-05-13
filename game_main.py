@@ -12,14 +12,11 @@ from game.game_parameters import GameParameters as gp
 from game.cars import PlayerCar, ComputerCar
 
 
-
 class Game:
-    # pygame.init()
-
     """Modulacja z funkcjami pygame -> dużo miesza bo razem z załadowaniem obrazka długi ciąg się robi"""
 
     @staticmethod
-    def draw_static(window, images: list):  # self
+    def draw_static(window, images: list):
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
@@ -30,10 +27,10 @@ class Game:
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, 'white')
+        font = pygame.font.Font("freesansbold.ttf", 32)
+        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
-        generation_counter = font.render("Count  ->  " + str(generation_counter), True, 'white')
+        generation_counter = font.render("Count  ->  " + str(generation_counter), True, "white")
         gp.GAME_WINDOW.blit(generation_counter, (800, 160))
         # time_counter = Button('timer', (Button.WIDTH/2 - 75, Button.HEIGHT - 100), Button.screen, Button.font)
         # time_counter.draw()
@@ -46,8 +43,8 @@ class Game:
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, 'white')
+        font = pygame.font.Font("freesansbold.ttf", 32)
+        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
 
     @staticmethod
@@ -56,8 +53,8 @@ class Game:
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, 'white')
+        font = pygame.font.Font("freesansbold.ttf", 32)
+        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
 
     @staticmethod
@@ -66,12 +63,11 @@ class Game:
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        text = font.render("To start game press ENTER", True, 'white')
+        font = pygame.font.Font("freesansbold.ttf", 32)
+        text = font.render("To start game press ENTER", True, "white")
         gp.GAME_WINDOW.blit(text, (800, 160))
-        text = font.render("To exit game press ESC", True, 'white')
+        text = font.render("To exit game press ESC", True, "white")
         gp.GAME_WINDOW.blit(text, (800, 200))
-
 
     @staticmethod
     def draw_dynamic(window, all_cars):
@@ -105,7 +101,9 @@ class Game:
         while run:
             timer.tick(FPS)
             all_cars = cars2
-            Game.draw_static_algo1(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=stime)  # self
+            Game.draw_static_algo1(
+                window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=stime
+            )  # self
             Game.draw_dynamic(window=gp.GAME_WINDOW, all_cars=all_cars)  # self
             # key = pygame.key.get_pressed()
             # if key[pygame.K_c]:
@@ -165,12 +163,19 @@ class Game:
             # print(player_car[0].collide)
             car_pos = (player_car[0].x_cord, player_car[0].y_cord)
             finish_pos = (gp.FINISH_X_CORD, gp.FINISH_Y_CORD)
-            collision_with_meta = detect_stat_dyn_collide(gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos)
+            collision_with_meta = detect_stat_dyn_collide(
+                gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos
+            )
             etime = time.time()
             if collision_with_meta and (etime - stime) > 2.0:
-                print("finish line !!!")
-                # run = False
-                print("Wygrałeś")
+                while run:
+                    Game.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                    pygame.display.update()
+                    Game.exit_game()
+                    if keyboard.is_pressed("enter"):
+                        Game.play_solo()
+                    elif keyboard.is_pressed("esc"):
+                        run = False
             if player_car[0].collide is not None:
                 while run:
                     Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
@@ -182,7 +187,6 @@ class Game:
                         run = False
 
             Game.exit_game()
-
 
     @staticmethod
     def play_algo_v2():
@@ -205,7 +209,12 @@ class Game:
         while run:
             timer.tick(FPS)
             all_cars = cars2
-            Game.draw_static_algo2(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=time_counter, generation_counter=generation_counter)
+            Game.draw_static_algo2(
+                window=gp.GAME_WINDOW,
+                images=gp.IMAGES_AND_SIZES,
+                timer=time_counter,
+                generation_counter=generation_counter,
+            )
             Game.draw_dynamic(window=gp.GAME_WINDOW, all_cars=all_cars)
             # key = pygame.key.get_pressed()
             # if key[pygame.K_c]:
@@ -215,7 +224,11 @@ class Game:
             # print(cars2[0].colide)
             if len(cars2) == 0:
                 for i in range(500):
-                    cars2.append(ComputerCar(rotation_vel=8, start_pos_y=380, start_pos_x=750, max_velocity=5))
+                    cars2.append(
+                        ComputerCar(
+                            rotation_vel=8, start_pos_y=380, start_pos_x=750, max_velocity=5
+                        )
+                    )
                 # print(ancestors.set_of_sets_all)
                 ancestors.reduce_sets()
                 ancestors.who_to_follow(cars2)

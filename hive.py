@@ -9,6 +9,7 @@ import utils
 there you can see a step by step creation of the Tre and decision process 
 """
 
+
 class Tre:
     def __init__(self, data):
         self.right = None
@@ -18,7 +19,8 @@ class Tre:
 
     def next_step(self, cars):
         """next_step -> for every object (car) in list of objects (cars) we are checking if it collides with any
-        barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data"""
+        barrier, if so we delete the car's path, if not we perform get_deciosion() function and expand our path data
+        """
         cars_new = []
         for car in cars:
             if car.collide:
@@ -27,15 +29,15 @@ class Tre:
             else:
                 decision = self.get_decision(car.path.copy())
                 car.turn = decision
-                #print(decision, car.turn)
+                # print(decision, car.turn)
                 car.path.append(decision)
-                #print(car.path)
+                # print(car.path)
                 cars_new.append(car)
         return cars_new
 
     def function(self):
         """function -> adding elements to the Tre, if there is None, if they exist - draws decision (if next step would
-            be right or left), on this data extends path strength"""
+        be right or left), on this data extends path strength"""
         if self.left is None:
             self.left = Tre(1)
         if self.right is None:
@@ -80,6 +82,7 @@ class Tre:
                 self.right.purge_path(path)
                 self.data -= self.strength_path
 
+
 # tree = Tre(1)
 # mypath = []
 # # tree.right = Tre(2)
@@ -89,9 +92,6 @@ class Tre:
 # # tree.left.right = Tre(3)
 # # tree.left.left = Tre(3)
 # print(tree.get_decision(mypath))
-
-
-
 
 
 class Ancestors:
@@ -128,7 +128,9 @@ class Ancestors:
             car.turn = random.choice([-1, 1])
 
     def reduce_sets(self):
-        self.set_of_sets = sorted(self.set_of_sets_all, key=len, reverse=True)[0:self.max_sets].copy()
+        self.set_of_sets = sorted(self.set_of_sets_all, key=len, reverse=True)[
+            0 : self.max_sets
+        ].copy()
         self.set_of_sets_all = []
 
     def who_to_follow(self, cars):
@@ -137,15 +139,8 @@ class Ancestors:
             print(len(tmp_set), "  ", tmp_set)
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
-            #car.follow_path = [0]
+            # car.follow_path = [0]
             car.jump = self.base_unfollow_probability ** len(car.follow_path)
-
-
-
-
-
-
-
 
 
 class Ants:
@@ -160,8 +155,10 @@ class Ants:
         # self.scents_of_death = []
 
     def decide(self, car_position_x, car_position_y, car_rotation):
-        rotation_matrix = [[math.cos(math.radians(car_rotation)), -math.sin(math.radians(car_rotation))],
-                           [math.sin(math.radians(car_rotation)), math.cos(math.radians(car_rotation))]]
+        rotation_matrix = [
+            [math.cos(math.radians(car_rotation)), -math.sin(math.radians(car_rotation))],
+            [math.sin(math.radians(car_rotation)), math.cos(math.radians(car_rotation))],
+        ]
 
         sens_half_width = 2
         sens_length = 1
@@ -182,11 +179,15 @@ class Ants:
         # right_points = numpy.multiply(right_points, rotation_matrix)
         for point in range(len(left_points)):
             # print(int(numpy.round(left_points[point][0] + car_position_y, 0)))
-            left_points[point] = [int(numpy.round(left_points[point][0] + car_position_x, 0)),
-                                  int(numpy.round(left_points[point][1] + car_position_y, 0))]
+            left_points[point] = [
+                int(numpy.round(left_points[point][0] + car_position_x, 0)),
+                int(numpy.round(left_points[point][1] + car_position_y, 0)),
+            ]
         for point in range(len(right_points)):
-            right_points[point] = [int(numpy.round(right_points[point][0] + car_position_x, 0)),
-                                   int(numpy.round(right_points[point][1] + car_position_y, 0))]
+            right_points[point] = [
+                int(numpy.round(right_points[point][0] + car_position_x, 0)),
+                int(numpy.round(right_points[point][1] + car_position_y, 0)),
+            ]
         # for point in range(len(straight_points)):
         #     straight_points[point] = [int(numpy.round(straight_points[point][0] + car_position_x, 0)),
         #                               int(numpy.round(straight_points[point][1] + car_position_y, 0))]
@@ -200,7 +201,7 @@ class Ants:
         # for i in range(len(straight_points)):
         #     weight_straight += self.matrix[straight_points[i][0]][straight_points[i][1]]
 
-        decision = random.choices([-1, 1], [weight_left ** 2, weight_right ** 2], k=1)
+        decision = random.choices([-1, 1], [weight_left**2, weight_right**2], k=1)
         # print(weight_left)
         # print(weight_right)
         # print(decision)
@@ -221,7 +222,9 @@ class Ants:
             else:
                 # car.turn = round(random.uniform(-1, 1))
                 # car.turn = random.choice([-1, 1])
-                car.turn = self.decide(utils.position_fix(car.x_cord), utils.position_fix(car.y_cord), car.angle)
+                car.turn = self.decide(
+                    utils.position_fix(car.x_cord), utils.position_fix(car.y_cord), car.angle
+                )
                 # car.turn = self.get_decision(car.path)
                 # car.path.append(car.turn)
                 carsnew.append(car)
@@ -231,7 +234,7 @@ class Ants:
                 print(car.scent_of_death)
                 self.matrix[x][y] *= self.scent_strength
 
-                if self.matrix[x][y] > 1.2 ** 200:
+                if self.matrix[x][y] > 1.2**200:
                     print(":<")
                     for i in range(self.size[0]):
                         for j in range(self.size[1]):
@@ -241,10 +244,10 @@ class Ants:
         return carsnew
 
     def show_matrix(self):
-        with open('matrix.txt', 'w') as f:
+        with open("matrix.txt", "w") as f:
             for row in self.matrix:
                 countTmp = 0
                 for ttmp in row:
                     countTmp += ttmp
                 # print(countTmp)
-                f.write(' '.join(str(x) for x in row) + '\n')
+                f.write(" ".join(str(x) for x in row) + "\n")
