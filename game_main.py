@@ -28,6 +28,8 @@ class Game:
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
+        data_text = font.render("__DATA__", True, "white")
+        gp.GAME_WINDOW.blit(data_text, (800, 120))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
         generation_counter = font.render("Count  ->  " + str(generation_counter), True, "white")
@@ -44,6 +46,8 @@ class Game:
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
+        data_text = font.render("__DATA__", True, "white")
+        gp.GAME_WINDOW.blit(data_text, (800, 160))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
 
@@ -54,20 +58,25 @@ class Game:
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
+        data_text = font.render("__DATA__", True, "white")
+        gp.GAME_WINDOW.blit(data_text, (800, 160))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
 
     @staticmethod
-    def draw_static_info(window, images: list):
+    def draw_static_info(window, images: list, time=None):
         """draw_static_info -> draws information how to start game and how to exit it"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
+        if time is not None:
+            text = font.render(f"Your time: {round(time,3)}", True, "white")
+            gp.GAME_WINDOW.blit(text, (100, 670))
         text = font.render("To start game press ENTER", True, "white")
-        gp.GAME_WINDOW.blit(text, (800, 160))
+        gp.GAME_WINDOW.blit(text, (100, 700))
         text = font.render("To exit game press ESC", True, "white")
-        gp.GAME_WINDOW.blit(text, (800, 200))
+        gp.GAME_WINDOW.blit(text, (100, 730))
 
     @staticmethod
     def draw_dynamic(window, all_cars):
@@ -145,6 +154,12 @@ class Game:
             PlayerCar(rotation_vel=1, start_pos_y=380, start_pos_x=750, max_velocity=1)
         )
 
+        # run_enter = run
+        # while run_enter:
+        #     keys = pygame.key.get_pressed()
+        #     if keys[pygame.K_KP_ENTER] or keys[pygame.K_SPACE]:
+        #         break
+
         # while True:
         #     timer.tick(FPS)
         #     Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
@@ -152,7 +167,7 @@ class Game:
         #     #time.sleep(2)
         #     if keys[pygame.K_KP_ENTER] or keys[pygame.K_SPACE]:
         #         break
-        # TU MIAŁ BYĆ EKRAN NACIŚNIJ PRZYCISK ABY ZACZĄĆ
+        # todo TU MIAŁ BYĆ EKRAN NACIŚNIJ PRZYCISK ABY ZACZĄĆ
 
         stime = time.time()
         while run:
@@ -169,7 +184,7 @@ class Game:
             etime = time.time()
             if collision_with_meta and (etime - stime) > 2.0:
                 while run:
-                    Game.draw_static(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                    Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime-stime)
                     pygame.display.update()
                     Game.exit_game()
                     if keyboard.is_pressed("enter"):
@@ -238,3 +253,5 @@ class Game:
                     # ants.show_matrix()
                     pygame.quit()
                     sys.exit()
+            if keyboard.is_pressed("esc"):
+                run = False

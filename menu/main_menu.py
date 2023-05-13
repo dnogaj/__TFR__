@@ -9,7 +9,7 @@ from game_main_fun import Game
 
 class MainMenu:
     pygame.init()
-    FPS = 10
+    FPS = 60
 
     def __init__(self):
         self.WIDTH = 1400
@@ -32,22 +32,23 @@ class MainMenu:
         self.menu_command = 0
         self.option_command = -1
 
-    def draw_menu(self, command=-1):
-        """draw_menu is function that generates whole view of main manu (buttons, words, background picture)"""
+    def draw_menu_screen(self, command=-1):
+        """draw_menu_screen is function that generates whole view of main manu (buttons, words, background picture)"""
         self.screen.blit(self.bg, (0, 0))
-        pygame.draw.rect(self.screen, "black", [50, 100, 300, 300])
-        pygame.draw.rect(self.screen, "green", [50, 100, 300, 300], 5)
-        pygame.draw.rect(self.screen, "white", [70, 120, 260, 40], 0, 5)
-        pygame.draw.rect(self.screen, "gray", [70, 120, 260, 40], 5, 5)
+        move_menu_height = 220
+        pygame.draw.rect(self.screen, "black", [50, 100+move_menu_height, 300, 300])
+        pygame.draw.rect(self.screen, "green", [50, 100+move_menu_height, 300, 300], 5)
+        pygame.draw.rect(self.screen, "white", [70, 120+move_menu_height, 260, 40], 0, 5)
+        pygame.draw.rect(self.screen, "gray", [70, 120+move_menu_height, 260, 40], 5, 5)
         txt = self.font.render("Menus!", True, "black")
-        self.screen.blit(txt, (135, 127))
-        menu = Button("Exit Menu", (85, 350), self.screen, self.font)
+        self.screen.blit(txt, (135, 127+move_menu_height))
+        menu = Button("Exit Menu", (85, 350+move_menu_height), self.screen, self.font)
         menu.draw()
-        play_button = Button("Play", (85, 180), self.screen, self.font)
+        play_button = Button("Play", (85, 180+move_menu_height), self.screen, self.font)
         play_button.draw()
-        options_button = Button("Options", (85, 240), self.screen, self.font)
+        options_button = Button("Options", (85, 240+move_menu_height), self.screen, self.font)
         options_button.draw()
-        random_button = Button("Randomize", (85, 300), self.screen, self.font)
+        random_button = Button("Randomize", (85, 300+move_menu_height), self.screen, self.font)
         random_button.draw()
         if menu.check_clicked():
             command = 0
@@ -59,8 +60,8 @@ class MainMenu:
             command = 3
         return command
 
-    def draw_game(self):
-        """draw_game is the opening screen of the program"""
+    def draw_preload_screen(self):
+        """draw_preload_screen is the opening screen of the program"""
         menu_btn = Button(
             "Main Menu", (self.WIDTH / 2 - 75, self.HEIGHT - 100), self.screen, self.font
         )
@@ -69,8 +70,8 @@ class MainMenu:
         if menu_btn.check_clicked():
             self.menu_command = -1
 
-    def which_option(self):
-        """which_option -> function used to inform our user which game option is currently choosen"""
+    def which_game_option_choosen(self):
+        """which_game_option_choosen -> function used to inform our user which game option is currently choosen"""
         if self.option_command == 1:
             return "SOLO"
         elif self.option_command == 2:
@@ -78,8 +79,8 @@ class MainMenu:
         elif self.option_command == 3:
             return "ALGO 2"
 
-    def draw_options(self, command=-1):
-        """draw_options -> creates option screen, which you can open by clicking at the
+    def draw_options_screen(self, command=-1):
+        """draw_options_screen -> creates option screen, which you can open by clicking at the
         'options' button at the main_menu screen"""
         self.screen.blit(self.zlom, (0, 0))
         pygame.draw.rect(self.screen, "black", [50, 100, 300, 300])
@@ -119,22 +120,22 @@ class MainMenu:
             print(f"menu_command: {self.menu_command}")
             print(f"option_command: {self.option_command}")
             if self.menu_command == 0:
-                self.draw_game()
+                self.draw_preload_screen()
             elif self.menu_command == -1:
-                self.menu_command = self.draw_menu()
+                self.menu_command = self.draw_menu_screen()
                 if self.menu_command != -1:
                     self.want_go_to_main_menu = False
             elif self.menu_command > 0:
                #self.want_go_to_main_menu = self.draw_menu()
-
-                self.text = self.font.render("Randomized Game Option  ->  " + str(self.which_option()), True, "white")
+                self.draw_preload_screen()
+                self.text = self.font.render("Randomized Game Option  ->  " + str(self.which_game_option_choosen()), True, "white")
                 self.screen.blit(self.text, (150, 100))
 
                 if self.menu_command == 2:
-                    exit_command = self.draw_options()
+                    exit_command = self.draw_options_screen()
                     pygame.display.flip()
                     self.text = self.font.render(
-                        "Choosen Game Option  ->  " + str(self.option_command), True, "black"
+                        "Choosen Game Option  ->  " + str(self.which_game_option_choosen()), True, "black"
                     )
                     self.screen.blit(self.text, (900, 750))
                     if exit_command == 0:

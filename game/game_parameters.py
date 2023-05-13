@@ -13,6 +13,7 @@ class GameParameters:
     CAR_PATH2 = os.path.join("images", "car2.png")
     RACE_END_DEAD_PATH = os.path.join("images", "InkedMcQueen_DEAD_cp.jpg")
     FINISH_LINE_PATH = os.path.join("images", "finish_line.jpg")
+    RACE_END_FINISH_WIN_PATH = os.path.join("images", "winningFinishLine.jpg")
 
     """Loading images to program and resizing images to fit them on screen"""
     RACE_TRACK_BORDER = resize_img(pygame.image.load(RACE_TRACK_BORDER_PATH), 1.1)
@@ -21,6 +22,7 @@ class GameParameters:
     CAR_IM4G = resize_img(pygame.image.load(CAR_PATH2), 0.04)
     RACE_TRACK_BORDER_MASK = pygame.mask.from_surface(RACE_TRACK_BORDER)
     RACE_END_DEAD = resize_img(pygame.image.load(RACE_END_DEAD_PATH), 1.2)
+    RACE_END_WIN = resize_img(pygame.image.load(RACE_END_FINISH_WIN_PATH), 1.1)
     FINISH_LINE = pygame.transform.rotate(resize_img(pygame.image.load(FINISH_LINE_PATH), 0.07), 90)
     FINISH_MASK = pygame.mask.from_surface(FINISH_LINE)
     WIDTH, HIGH = RACE_TRACK_IMG.get_width(), RACE_TRACK_IMG.get_height()
@@ -34,5 +36,6 @@ class GameParameters:
     FINISH_POS = (FINISH_X_CORD, FINISH_Y_CORD)
     IMAGES_AND_SIZES = [(RACE_TRACK_IMG, (IMG_CORD_X, IMG_CORD_Y)), (FINISH_LINE, (FINISH_X_CORD, FINISH_Y_CORD))]
     IMAGES_AND_SIZES_DEAD = [(RACE_END_DEAD, (IMG_CORD_X, IMG_CORD_Y))]
+    IMAGES_AND_SIZES_WIN = [(RACE_END_WIN, (IMG_CORD_X, IMG_CORD_Y))]
 
     #FONT = pygame.font.Font('freesansbold.ttf', 24)
