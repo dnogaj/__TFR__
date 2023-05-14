@@ -34,6 +34,10 @@ class Game:
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
         generation_counter = font.render("Count  ->  " + str(generation_counter), True, "white")
         gp.GAME_WINDOW.blit(generation_counter, (800, 160))
+        usage = font.render("__USAGE__", True, "white")
+        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        how_to_exit = font.render("Press TAB to exit", True, "white")
+        gp.GAME_WINDOW.blit(how_to_exit, (1000, 740))
         # time_counter = Button('timer', (Button.WIDTH/2 - 75, Button.HEIGHT - 100), Button.screen, Button.font)
         # time_counter.draw()
         # text = font.render("Randomized Game Option  ->  " + str(timer), True, 'white')
@@ -50,6 +54,10 @@ class Game:
         gp.GAME_WINDOW.blit(data_text, (800, 160))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
+        usage = font.render("__USAGE__", True, "white")
+        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        how_to_exit = font.render("Press TAB to exit", True, "white")
+        gp.GAME_WINDOW.blit(how_to_exit, (1000, 740))
 
     @staticmethod
     def draw_static_solo(window, images: list, timer):
@@ -60,8 +68,17 @@ class Game:
         font = pygame.font.Font("freesansbold.ttf", 32)
         data_text = font.render("__DATA__", True, "white")
         gp.GAME_WINDOW.blit(data_text, (800, 160))
-        time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
+        if timer == 0:
+            time_counter = font.render("Time  ->  " + timer , True, "white")
+        else:
+            time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
+        usage = font.render("__USAGE__", True, "white")
+        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        how_to_start = font.render("Press SPACE to start game", True, "white")
+        gp.GAME_WINDOW.blit(how_to_start, (1000, 740))
+        how_to_exit = font.render("Press TAB to exit", True, "white")
+        gp.GAME_WINDOW.blit(how_to_exit, (1000, 780))
 
     @staticmethod
     def draw_static_info(window, images: list, time=None):
@@ -182,7 +199,8 @@ class Game:
         #         break
         # todo TU MIAŁ BYĆ EKRAN NACIŚNIJ PRZYCISK ABY ZACZĄĆ
 
-        stime = time.time()
+        stime = 0
+        start_game = False
         while run:
             timer.tick(FPS)
             Game.draw_static_solo(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=stime)
