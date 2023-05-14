@@ -13,7 +13,7 @@ class MainMenu:
 
     def __init__(self):
         self.WIDTH = 1400
-        self.HEIGHT = 860
+        self.HEIGHT = 820   #860
         self.timer = pygame.time.Clock()
         self.screen = pygame.display.set_mode([self.WIDTH, self.HEIGHT])
         pygame.display.set_caption("Menus TFR")

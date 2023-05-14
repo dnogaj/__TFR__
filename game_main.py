@@ -1,7 +1,9 @@
 import time
 
 import pygame
+import os
 import sys
+import math
 import keyboard
 
 from hive import Tre, Ancestors
@@ -68,26 +70,26 @@ class Game:
             time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
         usage = font.render("__USAGE__", True, "white")
-        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        gp.GAME_WINDOW.blit(usage, (900, 700))
         how_to_start = font.render("Press SPACE to start game", True, "white")
-        gp.GAME_WINDOW.blit(how_to_start, (1000, 740))
+        gp.GAME_WINDOW.blit(how_to_start, (900, 740))
         how_to_exit = font.render("Press TAB to exit", True, "white")
-        gp.GAME_WINDOW.blit(how_to_exit, (1000, 780))
+        gp.GAME_WINDOW.blit(how_to_exit, (900, 780))
 
     @staticmethod
     def draw_static_info(window, images: list, time=None):
-        """draw_static_info -> draws information how to start game and how to exit it"""
+        """draw_static_info -> draws information how to start new game after pressing TAB or corssing the finish line and how to exit it"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
         if time is not None:
             text = font.render(f"Your time: {round(time,3)}", True, "white")
-            gp.GAME_WINDOW.blit(text, (100, 670))
+            gp.GAME_WINDOW.blit(text, (100, 640))
         text = font.render("To start game press ENTER", True, "white")
-        gp.GAME_WINDOW.blit(text, (100, 700))
+        gp.GAME_WINDOW.blit(text, (100, 670))
         text = font.render("To exit game press ESC", True, "white")
-        gp.GAME_WINDOW.blit(text, (100, 730))
+        gp.GAME_WINDOW.blit(text, (100, 700))
 
     @staticmethod
     def draw_dynamic(window, all_cars):
@@ -121,7 +123,7 @@ class Game:
         # player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
         cars2 = []
         cars2.append(
-            ComputerCar(rotation_vel=2, start_pos_y=380, start_pos_x=750, max_velocity=10)
+            ComputerCar(rotation_vel=2, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
         )  # self
 
         # size = gp.RACE_TRACK_IMG.get_size()        #unused
@@ -144,7 +146,7 @@ class Game:
             # print(cars2[0].colide)
             if len(cars2) < 1000:
                 cars2.append(
-                    ComputerCar(rotation_vel=10, start_pos_y=380, start_pos_x=750, max_velocity=10)
+                    ComputerCar(rotation_vel=10, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
                 )  # self
             if keyboard.is_pressed("tab"):
                 run = Game.exiting_game_algo(run)
@@ -169,7 +171,7 @@ class Game:
         """Creating clock instance"""
         timer = pygame.time.Clock()
         """Creating player car instance"""
-        player_car = [PlayerCar(rotation_vel=1, start_pos_y=380, start_pos_x=750, max_velocity=0)]
+        player_car = [PlayerCar(rotation_vel=1, start_pos_y=380 - 50, start_pos_x=750, max_velocity=0)]
 
         "Starting game and timer parameters"
         stime = 0
@@ -203,7 +205,7 @@ class Game:
                             Game.play_solo()
                         elif keyboard.is_pressed("esc"):
                             run = False
-                if player_car[0].collide is not None:
+                if player_car[0].collide is not None or keyboard.is_pressed("tab"):
                     """This conditional statement defines what is doing when car collides band"""
                     while run:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
@@ -228,7 +230,7 @@ class Game:
         cars2 = []
 
         for i in range(1000):
-            car = ComputerCar(rotation_vel=8, start_pos_y=380, start_pos_x=750, max_velocity=5)
+            car = ComputerCar(rotation_vel=8, start_pos_y=380 - 50, start_pos_x=750, max_velocity=5)
             cars2.append(car)
 
         time_counter = time.time()
@@ -254,7 +256,7 @@ class Game:
                 for i in range(500):
                     cars2.append(
                         ComputerCar(
-                            rotation_vel=8, start_pos_y=380, start_pos_x=750, max_velocity=5
+                            rotation_vel=8, start_pos_y=380 - 50, start_pos_x=750, max_velocity=5
                         )
                     )
                 # print(ancestors.set_of_sets_all)
