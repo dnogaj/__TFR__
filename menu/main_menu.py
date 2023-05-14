@@ -146,21 +146,28 @@ class MainMenu:
                     pygame.display.flip()
                     game = gmf.Game()
                     game.play_solo()
-                    run = False
+                    #run = False
+                    self.menu_command = 0
                 elif self.menu_command == 1 and self.option_command == 2:
                     pygame.display.flip()
                     game = gmf.Game()
                     game.play_algo()
-                    run = False
+                    #run = False
+                    self.menu_command = 0
                 elif self.menu_command == 1 and self.option_command == 3:
                     pygame.display.flip()
                     game = gmf.Game()
                     game.play_algo_v2()
-                    run = False
+                    #run = False
+                    self.menu_command = 0
 
                 if self.menu_command == 3:
                     self.option_command = random.randint(1, 3)
                     self.menu_command = 10
+
+            key = pygame.key.get_pressed()
+            if key[pygame.K_TAB]:
+                run = False
 
             Game.exit_game()
             pygame.display.flip()

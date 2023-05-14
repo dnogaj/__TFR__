@@ -29,15 +29,15 @@ class Game:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
         data_text = font.render("__DATA__", True, "white")
-        gp.GAME_WINDOW.blit(data_text, (800, 120))
+        gp.GAME_WINDOW.blit(data_text, (1050, 320))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
-        gp.GAME_WINDOW.blit(time_counter, (800, 200))
+        gp.GAME_WINDOW.blit(time_counter, (1000, 360))
         generation_counter = font.render("Count  ->  " + str(generation_counter), True, "white")
-        gp.GAME_WINDOW.blit(generation_counter, (800, 160))
+        gp.GAME_WINDOW.blit(generation_counter, (1000, 400))
         usage = font.render("__USAGE__", True, "white")
-        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        gp.GAME_WINDOW.blit(usage, (1050, 500))
         how_to_exit = font.render("Press TAB to exit", True, "white")
-        gp.GAME_WINDOW.blit(how_to_exit, (1000, 740))
+        gp.GAME_WINDOW.blit(how_to_exit, (1000, 540))
 
     @staticmethod
     def draw_static_algo1(window, images: list, timer):
@@ -47,13 +47,13 @@ class Game:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
         data_text = font.render("__DATA__", True, "white")
-        gp.GAME_WINDOW.blit(data_text, (800, 160))
+        gp.GAME_WINDOW.blit(data_text, (1050, 360))
         time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
-        gp.GAME_WINDOW.blit(time_counter, (800, 200))
+        gp.GAME_WINDOW.blit(time_counter, (1000, 400))
         usage = font.render("__USAGE__", True, "white")
-        gp.GAME_WINDOW.blit(usage, (1000, 700))
+        gp.GAME_WINDOW.blit(usage, (1050, 500))
         how_to_exit = font.render("Press TAB to exit", True, "white")
-        gp.GAME_WINDOW.blit(how_to_exit, (1000, 740))
+        gp.GAME_WINDOW.blit(how_to_exit, (1000, 540))
 
     @staticmethod
     def draw_static_solo(window, images: list, timer):
@@ -63,18 +63,18 @@ class Game:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
         data_text = font.render("__DATA__", True, "white")
-        gp.GAME_WINDOW.blit(data_text, (800, 160))
+        gp.GAME_WINDOW.blit(data_text, (1050, 320))
         if timer == 0:
             time_counter = font.render("Time  ->  " + str(timer) , True, "white")
         else:
             time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
-        gp.GAME_WINDOW.blit(time_counter, (800, 200))
+        gp.GAME_WINDOW.blit(time_counter, (1000, 360))
         usage = font.render("__USAGE__", True, "white")
-        gp.GAME_WINDOW.blit(usage, (900, 700))
+        gp.GAME_WINDOW.blit(usage, (1050, 560))
         how_to_start = font.render("Press SPACE to start game", True, "white")
-        gp.GAME_WINDOW.blit(how_to_start, (900, 740))
+        gp.GAME_WINDOW.blit(how_to_start, (950, 600))
         how_to_exit = font.render("Press TAB to exit", True, "white")
-        gp.GAME_WINDOW.blit(how_to_exit, (900, 780))
+        gp.GAME_WINDOW.blit(how_to_exit, (950, 640))
 
     @staticmethod
     def draw_static_info(window, images: list, time=None):
