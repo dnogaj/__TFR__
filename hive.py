@@ -82,6 +82,41 @@ class Tre:
                 self.right.purge_path(path)
                 self.data -= self.strength_path
 
+    def save_path(self):
+        if self.left is None or self.right is None:
+            tmp = []
+            return tmp
+        elif self.left.data == self.right.data:
+            tmp = []
+            return tmp
+        else:
+            if self.left.data > self.right.data:
+                curnent_val = -1
+                tmp_list = self.left.save_path()
+                tmp_list.append(curnent_val)
+                return tmp_list
+            if self.left.data < self.right.data:
+                curnent_val = 1
+                tmp_list = self.right.save_path()
+                tmp_list.append(curnent_val)
+                return tmp_list
+
+    def save_path_to_file(self):
+        path = self.save_path()
+        path.reverse()
+
+        # open a file for writing
+        with open("tre_path.txt", "w") as f:
+            # write the list to the file
+            for item in path:
+                f.write(str(item) + "\n")
+
+    def save_path_to_file_pickle(self):
+        path = self.save_path()
+        path.reverse()
+        with open("tre_path.pkl", "wb") as f:
+            pickle.dump(path, f)
+
 
 # tree = Tre(1)
 # mypath = []
@@ -129,8 +164,8 @@ class Ancestors:
 
     def reduce_sets(self):
         self.set_of_sets = sorted(self.set_of_sets_all, key=len, reverse=True)[
-            0 : self.max_sets
-        ].copy()
+                           0: self.max_sets
+                           ].copy()
         self.set_of_sets_all = []
 
     def who_to_follow(self, cars):
@@ -201,7 +236,7 @@ class Ants:
         # for i in range(len(straight_points)):
         #     weight_straight += self.matrix[straight_points[i][0]][straight_points[i][1]]
 
-        decision = random.choices([-1, 1], [weight_left**2, weight_right**2], k=1)
+        decision = random.choices([-1, 1], [weight_left ** 2, weight_right ** 2], k=1)
         # print(weight_left)
         # print(weight_right)
         # print(decision)
@@ -234,7 +269,7 @@ class Ants:
                 print(car.scent_of_death)
                 self.matrix[x][y] *= self.scent_strength
 
-                if self.matrix[x][y] > 1.2**200:
+                if self.matrix[x][y] > 1.2 ** 200:
                     print(":<")
                     for i in range(self.size[0]):
                         for j in range(self.size[1]):
