@@ -84,9 +84,23 @@ class Game:
             car.draw_rotated_car(window)
             car.control()
             col = car.collision(gp.RACE_TRACK_BORDER_MASK)
+            #col = car.collision(gp.RACE_TRACK_BORDER_MASK_TRIM)
         #     print(f"border: {col[0]}")
 
         pygame.display.update()
+
+    @staticmethod
+    def exiting_game_algo(run, which_algo=1):
+        while run:
+            Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN_ALGO)
+            pygame.display.update()
+            Game.exit_game()
+            if keyboard.is_pressed("enter") and which_algo == 1:
+                Game.play_algo()
+            elif keyboard.is_pressed("enter") and which_algo == 2:
+                Game.play_algo_v2()
+            elif keyboard.is_pressed("esc"):
+                return False
 
     @staticmethod
     def play_algo():
@@ -124,9 +138,8 @@ class Game:
                 cars2.append(
                     ComputerCar(rotation_vel=10, start_pos_y=380, start_pos_x=750, max_velocity=10)
                 )  # self
-
-            if keyboard.is_pressed("esc"):  # esc closing application
-                run = False
+            if keyboard.is_pressed("tab"):
+                run = Game.exiting_game_algo(run)
 
             Game.exit_game()
             # for event in pygame.event.get():
@@ -253,5 +266,5 @@ class Game:
                     # ants.show_matrix()
                     pygame.quit()
                     sys.exit()
-            if keyboard.is_pressed("esc"):
-                run = False
+            if keyboard.is_pressed("tab"):
+                run = Game.exiting_game_algo(run, which_algo=2)

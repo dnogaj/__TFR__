@@ -4,7 +4,7 @@ import random
 # import game_main_fun as gmf
 import game_main as gmf
 from menu.button import Button
-from game_main_fun import Game
+from game_main import Game
 
 
 class MainMenu:
