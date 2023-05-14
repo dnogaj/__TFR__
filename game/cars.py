@@ -17,9 +17,8 @@ class AbstractCar:
         self.max_velocity = max_velocity
         self.rotation_vel = rotation_vel
         self.angle = 84
-        self.current_image = None  # BADZIEW ALERT
+        self.current_image = None
         self.collide = None
-        # self.collide_finish = None
         self.scent_of_death = []
         self.path = []
 
@@ -55,7 +54,6 @@ class AbstractCar:
         offset = int(self.x_cord), int(self.y_cord)
         car_mask = pygame.mask.from_surface(self.current_image)
         self.collide = track_mask.overlap(car_mask, offset)
-        # print(self.collide)
         return self.collide
 
 
@@ -91,5 +89,4 @@ class PlayerCar(AbstractCar):
             super().rotate(left=True)
         if keys[pygame.K_d]:
             super().rotate(right=True)
-        #if keys[pygame.K_w]:
         super().move()

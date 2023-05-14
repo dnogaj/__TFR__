@@ -69,7 +69,7 @@ class Game:
         data_text = font.render("__DATA__", True, "white")
         gp.GAME_WINDOW.blit(data_text, (800, 160))
         if timer == 0:
-            time_counter = font.render("Time  ->  " + timer , True, "white")
+            time_counter = font.render("Time  ->  " + str(timer) , True, "white")
         else:
             time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (800, 200))
@@ -181,23 +181,8 @@ class Game:
 
         player_car = []
         player_car.append(
-            PlayerCar(rotation_vel=1, start_pos_y=380, start_pos_x=750, max_velocity=1)
+            PlayerCar(rotation_vel=1, start_pos_y=380, start_pos_x=750, max_velocity=0)
         )
-
-        # run_enter = run
-        # while run_enter:
-        #     keys = pygame.key.get_pressed()
-        #     if keys[pygame.K_KP_ENTER] or keys[pygame.K_SPACE]:
-        #         break
-
-        # while True:
-        #     timer.tick(FPS)
-        #     Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES)
-        #     keys = pygame.key.get_pressed()
-        #     #time.sleep(2)
-        #     if keys[pygame.K_KP_ENTER] or keys[pygame.K_SPACE]:
-        #         break
-        # todo TU MIAŁ BYĆ EKRAN NACIŚNIJ PRZYCISK ABY ZACZĄĆ
 
         stime = 0
         start_game = False
@@ -205,32 +190,38 @@ class Game:
             timer.tick(FPS)
             Game.draw_static_solo(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=stime)
             Game.draw_dynamic(window=gp.GAME_WINDOW, all_cars=player_car)
-            player_car[0].control()
-            # print(player_car[0].collide)
-            car_pos = (player_car[0].x_cord, player_car[0].y_cord)
-            finish_pos = (gp.FINISH_X_CORD, gp.FINISH_Y_CORD)
-            collision_with_meta = detect_stat_dyn_collide(
-                gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos
-            )
-            etime = time.time()
-            if collision_with_meta and (etime - stime) > 2.0:
-                while run:
-                    Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime-stime)
-                    pygame.display.update()
-                    Game.exit_game()
-                    if keyboard.is_pressed("enter"):
-                        Game.play_solo()
-                    elif keyboard.is_pressed("esc"):
-                        run = False
-            if player_car[0].collide is not None:
-                while run:
-                    Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
-                    pygame.display.update()
-                    Game.exit_game()
-                    if keyboard.is_pressed("enter"):
-                        Game.play_solo()
-                    elif keyboard.is_pressed("esc"):
-                        run = False
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_SPACE]:
+                start_game = True
+                stime = time.time()
+            if start_game:
+                player_car[0].max_velocity = 1
+                player_car[0].control()
+                # print(player_car[0].collide)
+                car_pos = (player_car[0].x_cord, player_car[0].y_cord)
+                finish_pos = (gp.FINISH_X_CORD, gp.FINISH_Y_CORD)
+                collision_with_meta = detect_stat_dyn_collide(
+                    gp.FINISH_LINE, player_car[0].IMG, car_pos, finish_pos
+                )
+                etime = time.time()
+                if collision_with_meta and (etime - stime) > 2.0:
+                    while run:
+                        Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime-stime)
+                        pygame.display.update()
+                        Game.exit_game()
+                        if keyboard.is_pressed("enter"):
+                            Game.play_solo()
+                        elif keyboard.is_pressed("esc"):
+                            run = False
+                if player_car[0].collide is not None:
+                    while run:
+                        Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
+                        pygame.display.update()
+                        Game.exit_game()
+                        if keyboard.is_pressed("enter"):
+                            Game.play_solo()
+                        elif keyboard.is_pressed("esc"):
+                            run = False
 
             Game.exit_game()
 
