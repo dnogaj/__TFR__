@@ -58,7 +58,7 @@ class Game:
 
     @staticmethod
     def draw_static_solo(window, images: list, timer):
-        """draw_static_solo -> draws board (track and satatic fragments) for play_solo"""
+        """draw_static_solo -> draws board (track and static fragments) for play_solo"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
@@ -79,7 +79,8 @@ class Game:
 
     @staticmethod
     def draw_static_info(window, images: list, time=None):
-        """draw_static_info -> draws information how to start new game after pressing TAB or corssing the finish line and how to exit it"""
+        """draw_static_info -> draws information how to start new game after pressing TAB or corssing the finish line
+        and how to exit it"""
         window.fill((29, 130, 34))
         for image, position in images:
             window.blit(image, position)
@@ -116,19 +117,13 @@ class Game:
     @staticmethod
     def play_algo():
         """play_algo -> first algorithm that overcomes the track by itself"""
-        # car1 = PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200)
         run = True
         FPS = 300  # klatki na sekunde
         timer = pygame.time.Clock()  # tworzenie instancji zegara
-        # player_cars = []
-        # player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
         cars2 = []
         cars2.append(
             ComputerCar(rotation_vel=2, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
-        )  # self
-
-        # size = gp.RACE_TRACK_IMG.get_size()        #unused
-        # ants = Ants(size)                          #unused
+        )
         tre = Tre(1)
         stime = time.time()
 
