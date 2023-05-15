@@ -11,6 +11,7 @@ from utils import detect_stat_dyn_collide
 from game.game_parameters import GameParameters as gp
 from game.cars import PlayerCar, ComputerCar
 
+"""Zmiana"""
 
 class Game:
     """Modulacja z funkcjami pygame -> dużo miesza bo razem z załadowaniem obrazka długi ciąg się robi"""
@@ -198,21 +199,21 @@ class Game:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime - stime)
                         pygame.display.update()
                         Game.exit_game()
-                        key = pygame.key.get_pressed()
-                        if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
                             Game.play_solo()
-                        elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
+                        elif keys[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                             run = False
-                if player_car[0].collide is not None or key[pygame.K_TAB]:  # keyboard.is_pressed("tab"):
+                if player_car[0].collide is not None or keys[pygame.K_TAB]:  # keyboard.is_pressed("tab"):
                     """This conditional statement defines what is doing when car collides band"""
                     while run:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
                         pygame.display.update()
                         Game.exit_game()
-                        key = pygame.key.get_pressed()
-                        if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
+                        keys = pygame.key.get_pressed()
+                        if keys[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
                             Game.play_solo()
-                        elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
+                        elif keys[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                             run = False
 
             Game.exit_game()
