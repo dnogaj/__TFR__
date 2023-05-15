@@ -65,7 +65,7 @@ class Game:
         data_text = font.render("__DATA__", True, "white")
         gp.GAME_WINDOW.blit(data_text, (1050, 320))
         if timer == 0:
-            time_counter = font.render("Time  ->  " + str(timer) , True, "white")
+            time_counter = font.render("Time  ->  " + str(timer), True, "white")
         else:
             time_counter = font.render("Time  ->  " + str(round(time.time() - timer, 3)), True, "white")
         gp.GAME_WINDOW.blit(time_counter, (1000, 360))
@@ -85,7 +85,7 @@ class Game:
             window.blit(image, position)
         font = pygame.font.Font("freesansbold.ttf", 32)
         if time is not None:
-            text = font.render(f"Your time: {round(time,3)}", True, "white")
+            text = font.render(f"Your time: {round(time, 3)}", True, "white")
             gp.GAME_WINDOW.blit(text, (100, 640))
         text = font.render("To start game press ENTER", True, "white")
         gp.GAME_WINDOW.blit(text, (100, 670))
@@ -107,9 +107,9 @@ class Game:
             pygame.display.update()
             Game.exit_game()
             key = pygame.key.get_pressed()
-            if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter") and which_algo == 1:
+            if key[pygame.K_RETURN] and which_algo == 1:  # if keyboard.is_pressed("enter") and which_algo == 1:
                 Game.play_algo()
-            elif key[pygame.K_RETURN]:  # elif keyboard.is_pressed("enter") and which_algo == 2:
+            elif key[pygame.K_RETURN] and which_algo == 2:  # elif keyboard.is_pressed("enter") and which_algo == 2:
                 Game.play_algo_v2()
             elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                 return False
@@ -195,7 +195,7 @@ class Game:
                 etime = time.time()
                 if collision_with_meta and (etime - stime) > 2.0:
                     while run:
-                        Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime-stime)
+                        Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime - stime)
                         pygame.display.update()
                         Game.exit_game()
                         key = pygame.key.get_pressed()
@@ -203,7 +203,7 @@ class Game:
                             Game.play_solo()
                         elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                             run = False
-                if player_car[0].collide is not None or key[pygame.K_TAB]: # keyboard.is_pressed("tab"):
+                if player_car[0].collide is not None or key[pygame.K_TAB]:  # keyboard.is_pressed("tab"):
                     """This conditional statement defines what is doing when car collides band"""
                     while run:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
