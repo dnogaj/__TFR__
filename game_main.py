@@ -1,5 +1,6 @@
 import time
 
+# todo delete unused libraries
 import pygame
 import os
 import sys
@@ -136,8 +137,8 @@ class Game:
             all_cars = cars2
             Game.draw_static_algo1(
                 window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES, timer=stime
-            )  # self
-            Game.draw_dynamic(window=gp.GAME_WINDOW, all_cars=all_cars)  # self
+            )
+            Game.draw_dynamic(window=gp.GAME_WINDOW, all_cars=all_cars)
             # key = pygame.key.get_pressed()
             # if key[pygame.K_c]:
             #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
@@ -147,7 +148,7 @@ class Game:
             if len(cars2) < 1000:
                 cars2.append(
                     ComputerCar(rotation_vel=10, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
-                )  # self
+                )
             if keyboard.is_pressed("tab"):
                 run = Game.exiting_game_algo(run)
 

@@ -1,7 +1,6 @@
 import pygame
 import random
 
-# import game_main_fun as gmf
 import game_main as gmf
 from menu.button import Button
 from game_main import Game
@@ -126,7 +125,6 @@ class MainMenu:
                 if self.menu_command != -1:
                     self.want_go_to_main_menu = False
             elif self.menu_command > 0:
-               #self.want_go_to_main_menu = self.draw_menu()
                 self.draw_preload_screen()
                 self.text = self.font.render("Randomized Game Option  ->  " + str(self.which_game_option_choosen()), True, "white")
                 self.screen.blit(self.text, (150, 100))
