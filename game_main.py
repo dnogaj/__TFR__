@@ -5,7 +5,6 @@ import pygame
 import os
 import sys
 import math
-import keyboard
 
 from hive import Tre, Ancestors
 from utils import detect_stat_dyn_collide
@@ -107,11 +106,12 @@ class Game:
             Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN_ALGO)
             pygame.display.update()
             Game.exit_game()
-            if keyboard.is_pressed("enter") and which_algo == 1:
+            key = pygame.key.get_pressed()
+            if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter") and which_algo == 1:
                 Game.play_algo()
-            elif keyboard.is_pressed("enter") and which_algo == 2:
+            elif key[pygame.K_RETURN]:  # elif keyboard.is_pressed("enter") and which_algo == 2:
                 Game.play_algo_v2()
-            elif keyboard.is_pressed("esc"):
+            elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                 return False
 
     @staticmethod
@@ -144,7 +144,8 @@ class Game:
                 cars2.append(
                     ComputerCar(rotation_vel=10, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
                 )
-            if keyboard.is_pressed("tab"):
+            key = pygame.key.get_pressed()
+            if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
                 run = Game.exiting_game_algo(run)
 
             Game.exit_game()
@@ -197,19 +198,21 @@ class Game:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_WIN, time=etime-stime)
                         pygame.display.update()
                         Game.exit_game()
-                        if keyboard.is_pressed("enter"):
+                        key = pygame.key.get_pressed()
+                        if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
                             Game.play_solo()
-                        elif keyboard.is_pressed("esc"):
+                        elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                             run = False
-                if player_car[0].collide is not None or keyboard.is_pressed("tab"):
+                if player_car[0].collide is not None or key[pygame.K_TAB]: # keyboard.is_pressed("tab"):
                     """This conditional statement defines what is doing when car collides band"""
                     while run:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
                         pygame.display.update()
                         Game.exit_game()
-                        if keyboard.is_pressed("enter"):
+                        key = pygame.key.get_pressed()
+                        if key[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
                             Game.play_solo()
-                        elif keyboard.is_pressed("esc"):
+                        elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                             run = False
 
             Game.exit_game()
@@ -264,5 +267,6 @@ class Game:
                     # ants.show_matrix()
                     pygame.quit()
                     sys.exit()
-            if keyboard.is_pressed("tab"):
+            key = pygame.key.get_pressed()
+            if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
                 run = Game.exiting_game_algo(run, which_algo=2)
