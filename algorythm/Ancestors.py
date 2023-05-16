@@ -5,9 +5,9 @@ import random
 class Ancestors:
     def __init__(self):
         self.set_of_sets_all = []
-        self.max_sets = 50
+        self.max_sets = 400
         self.set_of_sets = []
-        self.base_unfollow_probability = 9 / 10  # always less than 1
+        self.base_unfollow_probability = 1 / 4  # always less than 1
 
     def next_step(self, cars):
         """if car colides we delete else decision funcion is called"""
