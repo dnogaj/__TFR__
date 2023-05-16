@@ -18,7 +18,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 > [TIP]
 > Korzystaj z sekcji ```PROTIPY```.
 <br /> 
-<br /> 
+<br /> <br /> 
 
 ## Zadanie 1 
 1.	Korzystaj z biblioteki pygame. 
@@ -57,8 +57,6 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 -	Pamiętaj o obsłudze zdarzenia QUIT: To zdarzenie jest generowane, gdy użytkownik próbuje zamknąć okno gry. Musisz obsłużyć to zdarzenie, zamykając Pygame i kończąc program, w przeciwnym razie gra będzie działać w nieskończoność.   
 
 <br /> 
-<br /> 
-
 <br /> 
 <br /> 
 
