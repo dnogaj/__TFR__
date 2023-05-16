@@ -38,10 +38,9 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 <br /> 
 
 ## Zadanie 2 
-1.	Stwórz prostokąt o kolorze <>.  
-2.	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. 
-3.	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
-4.	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).  
+1.	Stwórz prostokąt o dowolnym kolorze.  
+2.	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również o dowolnym kolorze i czcionce. 
+3.	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).  
 
 #### PROTIPY
 -	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty.  
