@@ -58,5 +58,5 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 
 <br /> 
-<br /> 
 ***
+<br /> 
