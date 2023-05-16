@@ -2,10 +2,10 @@
 
 docs: https://www.pygame.org/docs/
 
-ZADANIA  <br />
+#ZADANIA  <br />
 *** 
 <br />
-Zadanie 1 <br />
+##Zadanie 1 <br />
 •	Korzystaj z biblioteki pygame. <br />
 •	Narysuj dowolny obrazek w Paint. <br />
 •	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. <br />
@@ -13,7 +13,7 @@ Zadanie 1 <br />
 •	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. <br />
 
 > [!TIP]
-PROTIPY <br />
+###PROTIPY <br />
 •	Skorzystaj z prezentacji #spoiler. <br />
 •	Użyj pygame.image.load() do wczytania obrazu. <br />
 •	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. <br />
@@ -26,7 +26,7 @@ PROTIPY <br />
 >
 *** 
 <br /> 
-PROTIPY <br />
+###PROTIPY <br />
 •	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty. <br />
 •	Wykorzystaj pygame.Rect do stworzenia przycisku: Prostokątne przyciski są najłatwiejsze do stworzenia w Pygame, ponieważ moduł ten zawiera klasę Rect służącą do reprezentowania prostokątów. Możesz utworzyć prostokąt o określonym rozmiarze i pozycji, a następnie użyć go jako przycisku. <br />
 •	Wykorzystaj pygame.draw.rect do rysowania przycisku: Ta funkcja pozwala narysować prostokąt o określonym kolorze na powierzchni Pygame. Możesz użyć tej funkcji do narysowania ciała przycisku. <br />
@@ -37,7 +37,7 @@ PROTIPY <br />
 •	Pamiętaj o obsłudze zdarzenia QUIT: To zdarzenie jest generowane, gdy użytkownik próbuje zamknąć okno gry. Musisz obsłużyć to zdarzenie, zamykając Pygame i kończąc program, w przeciwnym razie gra będzie działać w nieskończoność. <br />
 *** 
 <br />
-Zadanie 3 <br />
+##Zadanie 3 <br />
 
 
 
