@@ -5,12 +5,13 @@ import random
 class Ancestors:
     def __init__(self):
         self.set_of_sets_all = []
-        self.max_sets = 400
         self.set_of_sets = []
+
+        self.max_sets = 250  # zad22 ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
         self.base_unfollow_probability = 1 / 4  # always less than 1
 
     def next_step(self, cars):
-        """if car colides we delete else decision funcion is called"""
+        """foreach car in cars if car colides we delete it else decision funcion is called"""
         cars_new = []
         for car in cars:
             if car.collide:
@@ -19,13 +20,13 @@ class Ancestors:
             else:
                 self.decide(car)  # sets car turn
                 car.path.append(car.turn)
-                car.jump = car.jump / self.base_unfollow_probability
+                car.jump = car.jump / self.base_unfollow_probability  # zad11 to tez wtedy trzeba zmienic
                 cars_new.append(car)
         return cars_new
 
     def decide(self, car):
         """decides if car will folow its path or start acting randomly
-        chnce to abandon path increases with distance traveled"""
+        chance to abandon path increases with distance traveled"""
         if len(car.path) < len(car.follow_path) and car.follow_ancestor_path:
             if random.choices([0, 1], [car.jump, 1 - car.jump], k=1)[0]:
                 car.turn = car.follow_path[len(car.path)]
@@ -51,7 +52,7 @@ class Ancestors:
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
             # car.follow_path = [0]
-            car.jump = self.base_unfollow_probability ** len(car.follow_path)
+            car.jump = self.base_unfollow_probability ** len(car.follow_path)  #  zad11 np jako zadanie mozna to do napisania dac
 
     def save_path(self):
         """returns longest path from set of paths that can be followed by car"""

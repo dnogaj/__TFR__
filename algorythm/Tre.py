@@ -8,7 +8,7 @@ class Tre:
         self.right = None
         self.left = None
         self.data = data
-        self.strength_path = 15
+        self.strength_path = 15 #zad33 ustawic wzor na wyliczanie tego w zaleznosci od ilosci samochodzikow
 
     def load_old_tree(self):
         if os.path.exists("tre_left.pkl") and os.path.exists("tre_right.pkl"):
@@ -31,9 +31,7 @@ class Tre:
             else:
                 decision = self.get_decision(car.path.copy())
                 car.turn = decision
-                # print(decision, car.turn)
                 car.path.append(decision)
-                # print(car.path)
                 cars_new.append(car)
         return cars_new
 
@@ -48,9 +46,9 @@ class Tre:
         # print(self.left.data)
         # print(self.right.data)
         if decision == -1:
-            self.left.data += self.strength_path
+            self.left.data += self.strength_path  # zad33 o ut czeba wzora zapodać
         elif decision == 1:
-            self.right.data += self.strength_path
+            self.right.data += self.strength_path  # zad33 i tu tez oczywiscie jakby co
         return decision
 
     def get_decision(self, path):
