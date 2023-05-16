@@ -2,10 +2,10 @@
 
 docs: https://www.pygame.org/docs/
 
-#ZADANIA  <br />
+# ZADANIA  <br />
 *** 
 <br />
-##Zadanie 1 <br />
+## Zadanie 1 <br />
 •	Korzystaj z biblioteki pygame. <br />
 •	Narysuj dowolny obrazek w Paint. <br />
 •	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. <br />
@@ -13,7 +13,7 @@ docs: https://www.pygame.org/docs/
 •	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. <br />
 
 > [!TIP]
-###PROTIPY <br />
+### PROTIPY <br />
 •	Skorzystaj z prezentacji #spoiler. <br />
 •	Użyj pygame.image.load() do wczytania obrazu. <br />
 •	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. <br />
@@ -26,12 +26,13 @@ docs: https://www.pygame.org/docs/
 >
 *** 
 <br /> 
-Zadanie 2
+## Zadanie 2
 •	Stwórz prostokąt o kolorze <>.
 •	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>.
 •	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
 •	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).
-PROTIPY
+
+### PROTIPY
 •	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty.
 •	Wykorzystaj pygame.Rect do stworzenia przycisku: Prostokątne przyciski są najłatwiejsze do stworzenia w Pygame, ponieważ moduł ten zawiera klasę Rect służącą do reprezentowania prostokątów. Możesz utworzyć prostokąt o określonym rozmiarze i pozycji, a następnie użyć go jako przycisku.
 •	Wykorzystaj pygame.draw.rect do rysowania przycisku: Ta funkcja pozwala narysować prostokąt o określonym kolorze na powierzchni Pygame. Możesz użyć tej funkcji do narysowania ciała przycisku.
@@ -42,7 +43,7 @@ PROTIPY
 •	Pamiętaj o obsłudze zdarzenia QUIT: To zdarzenie jest generowane, gdy użytkownik próbuje zamknąć okno gry. Musisz obsłużyć to zdarzenie, zamykając Pygame i kończąc program, w przeciwnym razie gra będzie działać w nieskończoność.
 
 <br />
-##Zadanie 3 <br />
+## Zadanie 3 <br />
 
 
 
