@@ -86,6 +86,3 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 -	Prawdopodobieństwo zejścia ze ścieżki powinno rosnąć.
 -	```self.base_unfollow_probability``` może być użyte w inny niż opisany sposób.
 
-<br /> 
-***
-<br /> 
