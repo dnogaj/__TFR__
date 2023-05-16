@@ -1,3 +1,5 @@
+docs: https://www.pygame.org/docs/
+
 ZADANIA  <br />
 *** 
 <br />
