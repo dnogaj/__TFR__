@@ -10,7 +10,7 @@
 
 Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
-[pg]: [https://www.pygame.org/docs/]
+[pg]: https://www.pygame.org/docs/
 
 ## Zadanie 1 
 1.	Korzystaj z biblioteki pygame. 
