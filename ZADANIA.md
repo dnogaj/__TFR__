@@ -12,7 +12,7 @@
 *	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. 
 
 ### PROTIPY 
--	Skorzystaj z prezentacji #spoiler. 
+-	Skorzystaj z prezentacji #spoiler.  
 -	Użyj pygame.image.load() do wczytania obrazu. 
 -	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. 
 -	Funkcja pygame.display.set_mode() tworzy i zwraca okno gry o zadanym rozmiarze. 
