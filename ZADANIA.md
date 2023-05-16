@@ -49,7 +49,8 @@ docs: [https://www.pygame.org/docs/](https://www.pygame.org/docs/)
  
 
 
-
+<br /> 
+<br /> 
 
 QUIZ
 1)	Genetyczny – algorytm blokowy
