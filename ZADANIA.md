@@ -1,9 +1,8 @@
 ![finishLineCross](https://github.com/jd-kowal/__TFR__/assets/94318576/70de2a10-0c07-4154-b3ce-4a6ac149a3db)
 
-docs: [https://www.pygame.org/docs/](https://www.pygame.org/docs/)
+*** 
 
 # ZADANIA  
-*** 
 
 ## Zadanie 1 
 *	Korzystaj z biblioteki pygame. 
@@ -51,6 +50,8 @@ docs: [https://www.pygame.org/docs/](https://www.pygame.org/docs/)
 
 <br /> 
 <br /> 
+***
+
 
 QUIZ
 1)	Genetyczny – algorytm blokowy
