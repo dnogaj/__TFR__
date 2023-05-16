@@ -29,7 +29,6 @@ PROTIPY <br />
 •	Sprawdź, czy przycisk został wciśnięty za pomocą metody collidepoint klasy Rect: Ta metoda sprawdza, czy dany punkt (tutaj pozycja myszy) jest w obrębie prostokąta. Możesz go użyć, aby sprawdzić, czy przycisk został wciśnięty. <br />
 •	Pamiętaj o odświeżaniu ekranu za pomocą pygame.display.flip: Ta funkcja aktualizuje cały ekran, więc musisz ją wywoływać po każdej zmianie stanu ekranu (np. po narysowaniu przycisku). <br />
 •	Pamiętaj o obsłudze zdarzenia QUIT: To zdarzenie jest generowane, gdy użytkownik próbuje zamknąć okno gry. Musisz obsłużyć to zdarzenie, zamykając Pygame i kończąc program, w przeciwnym razie gra będzie działać w nieskończoność. <br />
-*** 
 <br />
 Zadanie 3 <br />
 
