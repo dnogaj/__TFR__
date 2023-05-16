@@ -16,7 +16,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 <br /> 
 Korzystaj z sekcji ```PROTIPY```.
-
+<br /> 
 <br /> 
 
 ## Zadanie 1 
