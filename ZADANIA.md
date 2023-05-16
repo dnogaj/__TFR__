@@ -8,6 +8,10 @@
 * [Zadanie 3](#Zadanie-3)
 * [Zadanie 4](#Zadanie-4)
 
+Do prezentacji może przydać się [dokumentacja pygame-a][pg].
+
+[pg]: [https://www.pygame.org/docs/]
+
 ## Zadanie 1 
 1.	Korzystaj z biblioteki pygame. 
 2.	Narysuj dowolny obrazek w Paint. 
