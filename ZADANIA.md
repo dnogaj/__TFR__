@@ -3,16 +3,20 @@
 *** 
 
 # ZADANIA  
+* [Zadanie 1](#Zadanie-1)
+* [Zadanie 2](#Zadanie-2)
+* [Zadanie 3](#Zadanie-3)
+* [Zadanie 4](#Zadanie-4)
 
 ## Zadanie 1 
-*	Korzystaj z biblioteki pygame. 
-*	Narysuj dowolny obrazek w Paint. 
-*	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. 
-*	Wczytaj Twój obrazek i wyświetl go. 
-*	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. 
+1.	Korzystaj z biblioteki pygame. 
+2.	Narysuj dowolny obrazek w Paint. 
+3.	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. 
+4.	Wczytaj Twój obrazek i wyświetl go. 
+5.	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. 
 
 ### PROTIPY 
--	Skorzystaj z prezentacji #spoiler.  
+-	Skorzystaj z prezentacji #spoiler. 
 -	Użyj pygame.image.load() do wczytania obrazu. 
 -	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. 
 -	Funkcja pygame.display.set_mode() tworzy i zwraca okno gry o zadanym rozmiarze. 
@@ -26,10 +30,10 @@
 <br /> 
 
 ## Zadanie 2 
-*	Stwórz prostokąt o kolorze <>.  
-*	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. 
-*	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
-*	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).  
+1.	Stwórz prostokąt o kolorze <>.  
+2.	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. 
+3.	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
+4.	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).  
 
 ### PROTIPY
 -	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty.  
