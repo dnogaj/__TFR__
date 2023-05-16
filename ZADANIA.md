@@ -50,6 +50,9 @@
 
 ## Zadanie 3 
  
+ Rozpoczynam swój poranek kawą i [Wikipedią][wp].
+
+[wp]: https://pl.wikipedia.org/
 
 
 <br /> 
