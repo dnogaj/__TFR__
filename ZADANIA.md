@@ -60,16 +60,3 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 <br /> 
 <br /> 
 ***
-
-
-QUIZ
-1)	Genetyczny – algorytm blokowy
-•	
-2)	Jakie funkcje w module PyGame pozwalają wyświetlać obiekty na ekranie?
-•	Sd
-3)	Podaj wszystkie zdania prawdziwe na temat algorytmu heurystycznego
-
-
-
-Wyświetl dowolny napis na tle prostokąta o kolorze <>. Ustaw kolor tekstu <> oraz jego czcionkę <>. Następnie sprawdzaj kolizję (PROTIP: sprawdzaj pozycję myszy oraz czy lewy jej przycisk został wciśnięty). Dowolnie poinformuj użytkownika o wciśnięciu przycisku (może być to wypisanie w konsoli dowolnego tekstu).
-
