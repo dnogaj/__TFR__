@@ -8,6 +8,8 @@
 * [Zadanie 3](#Zadanie-3)
 * [Zadanie 4](#Zadanie-4)
 
+<br /> 
+
 Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 [pg]: https://www.pygame.org/docs/
