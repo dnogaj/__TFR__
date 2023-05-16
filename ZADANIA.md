@@ -39,7 +39,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 3.	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
 4.	Następnie napisz funkcję, która sprawdzi, czy przycisk został wciśnięty. Kiedy przycisk zostanie wciśnięty, poinformuj użytkownika o tym fakcie, na przykład wypisując tekst w konsoli (zobacz PROTIPY).  
 
-### PROTIPY
+#### PROTIPY
 -	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty.  
 -	Wykorzystaj ```pygame.Rect``` do stworzenia przycisku: Prostokątne przyciski są najłatwiejsze do stworzenia w Pygame, ponieważ moduł ten zawiera klasę Rect służącą do reprezentowania prostokątów. Możesz utworzyć prostokąt o określonym rozmiarze i pozycji, a następnie użyć go jako przycisku. 
 -	Wykorzystaj ```pygame.draw.rect()``` do rysowania przycisku: Ta funkcja pozwala narysować prostokąt o określonym kolorze na powierzchni Pygame. Możesz użyć tej funkcji do narysowania ciała przycisku. 
@@ -51,7 +51,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 <br /> 
 <br /> 
-***
+
 <br /> 
 <br /> 
 
@@ -63,7 +63,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 5. Spróbuj doprowadzić algorytm do momentu, w którym będziesz widział, że kolejne samochodziki pokonują więcej zakrętów niż poprzednie.
 6. Zescreenuj wynik w postaci samochodzików, które dojechały do drugiego zakrętu o 180 stopni. Możesz dodać również screena funkcji ```function()``` oraz ```purge_path()```.
 
-### PROTIPY
+#### PROTIPY
 -	Wartość zmiennej ```self.strength_path``` ma wbrew pozorom spore znaczenie. Jeśli Ci nie działa, to niekoniecznie błąd musi znajdować się funkcjach.
 -	Nie martw się, zadanie nie jest takie trudne, na jakie wygląda :))
 
@@ -77,7 +77,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 4. W funkcji ```who_to_follow()``` ustaw ```car.jump``` pożądaną szansę zejścia ze ścieżki w pierwszym kroku samochodzika (kod ten wykonuje się tylko raz na początku istnienia kolejnego pokolenia). 
 5. W funkcji ```next_step()``` zmieniaj ```car.jump``` w kolejnych krokach programu.
 
-### PROTIPY
+#### PROTIPY
 - ```car.jump``` jest to szansa na zeskoczenie ze ścieżki.
 -	Prawdopodobieństwo zejścia ze ścieżki powinno rosnąć.
 -	```self.base_unfollow_probability``` może być użyte w inny niż opisany sposób.
