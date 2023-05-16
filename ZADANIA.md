@@ -19,7 +19,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 4.	Wczytaj Twój obrazek i wyświetl go. 
 5.	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. 
 
-### PROTIPY 
+#### PROTIPY 
 -	Skorzystaj z prezentacji #spoiler. 
 -	Użyj ```pygame.image.load()``` do wczytania obrazu. 
 -	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. 
