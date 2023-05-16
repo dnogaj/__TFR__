@@ -51,6 +51,7 @@ class Tre:
             self.right.data += self.strength_path  # zad33 i tu tez oczywiscie jakby co
         return decision
 
+
     def get_decision(self, path):
         """get_decision() -> recursively traverses the Tre to find best option (probability), going left or right"""
         # # print(path)

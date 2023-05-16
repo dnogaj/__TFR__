@@ -2,6 +2,7 @@ import pickle
 import random
 
 
+
 class Ancestors:
     def __init__(self):
         self.set_of_sets_all = []
