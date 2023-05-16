@@ -5,13 +5,16 @@ import pygame
 import os
 import sys
 import math
-
-from hive import Tre, Ancestors
+from algorythm.Tre import Tre
+from algorythm.Ancestors import Ancestors
+from algorythm.Ants import Ants
+# from hive import Tre, Ancestors
 from utils import detect_stat_dyn_collide
 from game.game_parameters import GameParameters as gp
 from game.cars import PlayerCar, ComputerCar
 
 """Zmiana"""
+
 
 class Game:
     """Modulacja z funkcjami pygame -> dużo miesza bo razem z załadowaniem obrazka długi ciąg się robi"""
@@ -147,6 +150,7 @@ class Game:
                 )
             key = pygame.key.get_pressed()
             if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+                tre.save_path_to_file_pickle()
                 run = Game.exiting_game_algo(run)
 
             Game.exit_game()
@@ -270,4 +274,5 @@ class Game:
                     sys.exit()
             key = pygame.key.get_pressed()
             if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+                ancestors.save_path_file_pickle()
                 run = Game.exiting_game_algo(run, which_algo=2)
