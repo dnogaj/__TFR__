@@ -4,7 +4,7 @@ docs: https://www.pygame.org/docs/
 
 # ZADANIA  
 *** 
-<br />
+
 ## Zadanie 1 
 *	Korzystaj z biblioteki pygame. 
 *	Narysuj dowolny obrazek w Paint. 
@@ -12,7 +12,7 @@ docs: https://www.pygame.org/docs/
 *	Wczytaj Twój obrazek i wyświetl go. 
 *	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. 
 
-### PROTIPY <br />
+### PROTIPY 
 -	Skorzystaj z prezentacji #spoiler. 
 -	Użyj pygame.image.load() do wczytania obrazu. 
 -	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. 
