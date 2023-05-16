@@ -6,6 +6,7 @@ docs: https://www.pygame.org/docs/
 *** 
 <br />
 ## Zadanie 1 <br />
+*** 
 *	Korzystaj z biblioteki pygame. 
 *	Narysuj dowolny obrazek w Paint. 
 *	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. 
@@ -24,10 +25,10 @@ docs: https://www.pygame.org/docs/
 -	Uwaga: 'screen' jest przykładową nazwą obiektu okna gry, które stworzyłeś. Możesz ten obiekt nazwać inaczej jednakże należy wtedy uwzględnić tą zmianę w powyższych funkcjach. 
 
 <br /> 
-*** 
 <br /> 
 
 ## Zadanie 2
+*** 
 *	Stwórz prostokąt o kolorze <>.  
 *	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. 
 *	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
@@ -44,10 +45,10 @@ docs: https://www.pygame.org/docs/
 -	Pamiętaj o obsłudze zdarzenia QUIT: To zdarzenie jest generowane, gdy użytkownik próbuje zamknąć okno gry. Musisz obsłużyć to zdarzenie, zamykając Pygame i kończąc program, w przeciwnym razie gra będzie działać w nieskończoność.   
 
 <br /> 
-*** 
 <br /> 
-## Zadanie 3 <br />
 
+## Zadanie 3 <br />
+*** 
 
 
 
