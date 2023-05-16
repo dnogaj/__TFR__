@@ -2,7 +2,6 @@ import os
 import pickle
 import random
 
-
 class Tre:
     def __init__(self, data):
         self.right = None
@@ -78,10 +77,10 @@ class Tre:
             next_node = path.pop(0)
             if next_node == -1:
                 self.left.purge_path(path)
-                self.data -= self.strength_path
+                self.data -= self.strength_path  # zad33 tu tez tylko ze operacja przeciwna jak widac byl plus a jest minus
             elif next_node == 1:
                 self.right.purge_path(path)
-                self.data -= self.strength_path
+                self.data -= self.strength_path  # zad33 i tu
 
     def save_path(self):
         if self.left is None or self.right is None:
