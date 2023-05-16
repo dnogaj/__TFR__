@@ -5,16 +5,23 @@ import pygame
 import os
 import sys
 import math
-
-from hive import Tre, Ancestors
+from algorythm.Tre import Tre
+from algorythm.Ancestors import Ancestors
+from algorythm.Ants import Ants
+# from hive import Tre, Ancestors
 from utils import detect_stat_dyn_collide
 from game.game_parameters import GameParameters as gp
 from game.cars import PlayerCar, ComputerCar
 
 """Zmiana"""
 
+
 class Game:
     """Modulacja z funkcjami pygame -> dużo miesza bo razem z załadowaniem obrazka długi ciąg się robi"""
+
+    def __init__(self):
+        self.alg_speed = 10
+        self.alg_rotation = 10
 
     @staticmethod
     def draw_static(window, images: list):
@@ -115,15 +122,15 @@ class Game:
             elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
                 return False
 
-    @staticmethod
-    def play_algo():
+    def play_algo(self):
         """play_algo -> first algorithm that overcomes the track by itself"""
         run = True
         FPS = 300  # klatki na sekunde
         timer = pygame.time.Clock()  # tworzenie instancji zegara
         cars2 = []
         cars2.append(
-            ComputerCar(rotation_vel=2, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
+            ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                        max_velocity=self.alg_speed)
         )
         tre = Tre(1)
         stime = time.time()
@@ -143,10 +150,12 @@ class Game:
             # print(cars2[0].colide)
             if len(cars2) < 1000:
                 cars2.append(
-                    ComputerCar(rotation_vel=10, start_pos_y=380 - 50, start_pos_x=750, max_velocity=10)
+                    ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                                max_velocity=self.alg_speed)
                 )
             key = pygame.key.get_pressed()
             if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+                tre.save_path_to_file_pickle()
                 run = Game.exiting_game_algo(run)
 
             Game.exit_game()
@@ -218,8 +227,7 @@ class Game:
 
             Game.exit_game()
 
-    @staticmethod
-    def play_algo_v2():
+    def play_algo_v2(self):
         """play_algo_v2 -> second algorithm that overcomes the track by itself"""
         ancestors = Ancestors()
 
@@ -230,7 +238,8 @@ class Game:
         cars2 = []
 
         for i in range(1000):
-            car = ComputerCar(rotation_vel=8, start_pos_y=380 - 50, start_pos_x=750, max_velocity=5)
+            car = ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                              max_velocity=self.alg_speed)
             cars2.append(car)
 
         time_counter = time.time()
@@ -256,7 +265,8 @@ class Game:
                 for i in range(500):
                     cars2.append(
                         ComputerCar(
-                            rotation_vel=8, start_pos_y=380 - 50, start_pos_x=750, max_velocity=5
+                            rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                            max_velocity=self.alg_speed
                         )
                     )
                 # print(ancestors.set_of_sets_all)
@@ -270,4 +280,5 @@ class Game:
                     sys.exit()
             key = pygame.key.get_pressed()
             if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+                ancestors.save_path_file_pickle()
                 run = Game.exiting_game_algo(run, which_algo=2)
