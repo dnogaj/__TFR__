@@ -7,7 +7,7 @@ class Tre:
         self.right = None
         self.left = None
         self.data = data
-        self.strength_path = 15 #zad33 ustawic wzor na wyliczanie tego w zaleznosci od ilosci samochodzikow
+        self.strength_path = 0 #zad33 ustawic wzor na wyliczanie tego w zaleznosci od ilosci samochodzikow
 
     def load_old_tree(self):
         if os.path.exists("tre_left.pkl") and os.path.exists("tre_right.pkl"):
@@ -45,9 +45,9 @@ class Tre:
         # print(self.left.data)
         # print(self.right.data)
         if decision == -1:
-            self.left.data += self.strength_path  # zad33 o ut czeba wzora zapodać
+            self.left.data =0  # zad33 o ut czeba wzora zapodać
         elif decision == 1:
-            self.right.data += self.strength_path  # zad33 i tu tez oczywiscie jakby co
+            self.right.data =0  # zad33 i tu tez oczywiscie jakby co
         return decision
 
 
@@ -77,10 +77,10 @@ class Tre:
             next_node = path.pop(0)
             if next_node == -1:
                 self.left.purge_path(path)
-                self.data -= self.strength_path  # zad33 tu tez tylko ze operacja przeciwna jak widac byl plus a jest minus
+                self.data =0  # zad33 tu tez tylko ze operacja przeciwna jak widac byl plus a jest minus
             elif next_node == 1:
                 self.right.purge_path(path)
-                self.data -= self.strength_path  # zad33 i tu
+                self.data =0  # zad33 i tu
 
     def save_path(self):
         if self.left is None or self.right is None:
