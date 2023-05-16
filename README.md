@@ -2,10 +2,9 @@
 
 *** 
 [![My Skills](https://skillicons.dev/icons?i=py,github,discord)](https://skillicons.dev)
-
 *** 
 
-Project created using Python with PyGame ... (in progress)
+Project created using Python with PyGame based on Heuristic Algorithms.
 
 ## About
 TFR - Try Fail Repeat <br /><br />
@@ -24,5 +23,5 @@ We intend to create an interface that will show the operation of the heuristic a
 21.04 - colission detection <br />
 22.04 - prototype of the menu <br />
 06.05 - refractor the code and add finish line functionality <br />
-16.05 - fixing and correction small bugs
-
+15.05 - fixing and correction small bugs
+16.05 - finishing project
