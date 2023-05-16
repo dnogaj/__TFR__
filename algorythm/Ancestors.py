@@ -8,8 +8,8 @@ class Ancestors:
         self.set_of_sets_all = []
         self.set_of_sets = []
 
-        self.max_sets = 250  # zad22 ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
-        self.base_unfollow_probability = 1 / 4  # always less than 1
+        self.max_sets = 50  # zad22 ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
+        self.base_unfollow_probability = 4 / 5  # always less than 1
 
     def next_step(self, cars):
         """foreach car in cars if car colides we delete it else decision funcion is called"""
