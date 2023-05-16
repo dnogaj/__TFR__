@@ -8,6 +8,7 @@ Zadanie 1 <br />
 •	Wczytaj Twój obrazek i wyświetl go. <br />
 •	Przy naciśnięciu przycisku zamknięcia okna gry, zakończ program. <br />
 
+> [!TIP]
 PROTIPY <br />
 •	Skorzystaj z prezentacji #spoiler. <br />
 •	Użyj pygame.image.load() do wczytania obrazu. <br />
@@ -18,6 +19,7 @@ PROTIPY <br />
 •	Używając pygame.display.set_caption() ustawiasz tytuł okna gry. <br />
 •	Funkcja pygame.display.flip() odświeża ekran. <br />
 •	Uwaga: 'screen' jest przykładową nazwą obiektu okna gry, które stworzyłeś. Możesz ten obiekt nazwać inaczej jednakże należy wtedy uwzględnić tą zmianę w powyższych funkcjach. <br />
+>
 *** 
 <br /> 
 PROTIPY <br />
