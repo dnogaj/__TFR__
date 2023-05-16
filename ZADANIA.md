@@ -51,11 +51,36 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 <br /> 
 <br /> 
+***
+<br /> 
+<br /> 
 
 ## Zadanie 3 
- 
+1. Pobierz nasz projekt.
+2. Wyszukaj komentarze ```ZADANIE``` w module Tre w paczce algorythm.
+3.  ```self.strength_path``` to zmienna pomocnicza, aby nie mnożyć kodu. Odpowiada ona za wzmacnianie ścieżki. Jej dokładne zastosowanie zależy od waszej implementacji.
+4. W liniach z komentarzami trzeba uzupełnić kod odpowiadający za wzmacnianie i osłabianie się ścieżki.
+5. Spróbuj doprowadzić algorytm do momentu, w którym będziesz widział, że kolejne samochodziki pokonują więcej zakrętów niż poprzednie.
+6. Zescreenuj wynik w postaci samochodzików, które dojechały do drugiego zakrętu o 180 stopni. Możesz dodać również screena funkcji ```function()``` oraz ```purge_path()```.
 
+### PROTIPY
+-	Wartość zmiennej ```self.strength_path``` ma wbrew pozorom spore znaczenie. Jeśli Ci nie działa, to niekoniecznie błąd musi znajdować się funkcjach.
+-	Nie martw się, zadanie nie jest takie trudne, na jakie wygląda :))
 
+<br /> 
+<br /> 
+
+## Zadanie 4
+1. Korzystając również z naszego projektu, wyszukaj komentarze ```ZADANIE``` w module Ancestors w paczce algorythm.
+2. ```self.max_sets``` to zmienna, która zachowuje maksymalną ilość ścieżek, za którą będzie podążać następna generacja.
+3. ```self.base_unfollow_probability``` - jest to szansa na zejście ze ścieżki w ostatnim zapisanym kroku.
+4. W funkcji ```who_to_follow()``` ustaw ```car.jump``` pożądaną szansę zejścia ze ścieżki w pierwszym kroku samochodzika (kod ten wykonuje się tylko raz na początku istnienia kolejnego pokolenia). 
+5. W funkcji ```next_step()``` zmieniaj ```car.jump``` w kolejnych krokach programu.
+
+### PROTIPY
+- ```car.jump``` jest to szansa na zeskoczenie ze ścieżki.
+-	Prawdopodobieństwo zejścia ze ścieżki powinno rosnąć.
+-	```self.base_unfollow_probability``` może być użyte w inny niż opisany sposób.
 
 <br /> 
 ***
