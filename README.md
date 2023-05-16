@@ -1,6 +1,9 @@
 ![TFRoo](https://github.com/jd-kowal/__TFR__/assets/94318576/723ebdd8-38d8-4861-aa36-b27ad81c5377)
 
 *** 
+[![My Skills](https://skillicons.dev/icons?i=py,github,discord)](https://skillicons.dev)
+
+*** 
 
 Project created using Python with PyGame ... (in progress)
 
