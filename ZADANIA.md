@@ -1,4 +1,4 @@
-![MasterHead](https://1.bp.blogspot.com/-7A4WynwLsM...)](https://rishavchanda.io)
+![MasterHead](https://1.bp.blogspot.com/-7A4WynwLsM...)
 
 docs: [https://www.pygame.org/docs/](https://www.pygame.org/docs/)
 
