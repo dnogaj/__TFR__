@@ -5,8 +5,7 @@ docs: https://www.pygame.org/docs/
 # ZADANIA  <br />
 *** 
 <br />
-## Zadanie 1 <br />
-*** 
+## Zadanie 1 <br /> 
 *	Korzystaj z biblioteki pygame. 
 *	Narysuj dowolny obrazek w Paint. 
 *	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. 
@@ -27,8 +26,7 @@ docs: https://www.pygame.org/docs/
 <br /> 
 <br /> 
 
-## Zadanie 2
-*** 
+## Zadanie 2 
 *	Stwórz prostokąt o kolorze <>.  
 *	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. 
 *	Wewnątrz tego prostokąta, wyświetl dowolny tekst, również w dowolnym kolorze i czcionce. 
@@ -48,7 +46,7 @@ docs: https://www.pygame.org/docs/
 <br /> 
 
 ## Zadanie 3 <br />
-*** 
+ 
 
 
 
