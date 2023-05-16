@@ -1,5 +1,6 @@
-ZADANIA 
-***  <br /><br />
+ZADANIA  <br />
+*** 
+<br />
 Zadanie 1 <br />
 •	Korzystaj z biblioteki pygame. <br />
 •	Narysuj dowolny obrazek w Paint. <br />
@@ -16,16 +17,18 @@ PROTIPY <br />
 •	Używając screen.fill() możesz zmienić kolor tła. <br />
 •	Używając pygame.display.set_caption() ustawiasz tytuł okna gry. <br />
 •	Funkcja pygame.display.flip() odświeża ekran. <br />
-•	Uwaga: 'screen' jest przykładową nazwą obiektu okna gry, które stworzyłeś. Możesz ten obiekt nazwać inaczej jednakże należy wtedy uwzględnić tą zmianę w powyższych funkcjach. 
-*** <br /> <br />
+•	Uwaga: 'screen' jest przykładową nazwą obiektu okna gry, które stworzyłeś. Możesz ten obiekt nazwać inaczej jednakże należy wtedy uwzględnić tą zmianę w powyższych funkcjach. <br />
+*** 
+<br /> 
 Zadanie 2 <br />
 •	Stwórz prostokąt o kolorze <>.
 •	Wyświetl w tym prostokącie dowolny tekst o kolorze <> oraz czcionce <>. <br />
 •	Napisz funkcję, która sprawdza, czy przycisk został wciśnięty (zobacz PROTIP). <br />
 •	Dowolnie poinformuj użytkownika o wciśnięciu przycisku (może być to wypisanie w konsoli dowolnego tekstu). <br />
 PROTIPY <br /> 
-•	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty. 
-*** <br /> <br />
+•	Sprawdzaj pozycję myszy (czy pokrywa się z prostokątem) oraz czy lewy jej przycisk został wciśnięty.  <br />
+*** 
+<br />
 Zadanie 3 <br />
 
 
