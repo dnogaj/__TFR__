@@ -2,10 +2,10 @@
 
 docs: https://www.pygame.org/docs/
 
-# ZADANIA  <br />
+# ZADANIA  
 *** 
 <br />
-## Zadanie 1 <br /> 
+## Zadanie 1 
 *	Korzystaj z biblioteki pygame. 
 *	Narysuj dowolny obrazek w Paint. 
 *	Stwórz okno gry o wymiarach 800x600 z tytułem <Twój numer indeksu>. 
@@ -45,7 +45,7 @@ docs: https://www.pygame.org/docs/
 <br /> 
 <br /> 
 
-## Zadanie 3 <br />
+## Zadanie 3 
  
 
 
