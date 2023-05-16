@@ -21,7 +21,7 @@ Do prezentacji może przydać się [dokumentacja pygame-a][pg].
 
 ### PROTIPY 
 -	Skorzystaj z prezentacji #spoiler. 
--	Użyj pygame.image.load() do wczytania obrazu. 
+-	Użyj ```pygame.image.load()``` do wczytania obrazu. 
 -	Położenie obrazka definiujemy poprzez przekazanie w pikselach punktu, w którym znajduje się jego lewy górny róg. 
 -	Funkcja pygame.display.set_mode() tworzy i zwraca okno gry o zadanym rozmiarze. 
 -	Wykorzystaj screen.blit() do wyświetlenia obrazu na ekranie. 
