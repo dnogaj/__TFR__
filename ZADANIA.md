@@ -56,7 +56,7 @@ QUIZ
 •	
 2)	Jakie funkcje w module PyGame pozwalają wyświetlać obiekty na ekranie?
 •	Sd
-3)	
+3)	Podaj wszystkie zdania prawdziwe na temat algorytmu heurystycznego
 
 
 
