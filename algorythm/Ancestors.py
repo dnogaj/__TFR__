@@ -8,8 +8,8 @@ class Ancestors:
         self.set_of_sets_all = []
         self.set_of_sets = []
 
-        self.max_sets = 50  # zad22 ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
-        self.base_unfollow_probability = 4 / 5  # always less than 1
+        self.max_sets = 1  # ZADANIE
+        self.base_unfollow_probability = 0.1  # ZADANIE
 
     def next_step(self, cars):
         """foreach car in cars if car colides we delete it else decision funcion is called"""
@@ -21,7 +21,7 @@ class Ancestors:
             else:
                 self.decide(car)  # sets car turn
                 car.path.append(car.turn)
-                car.jump = car.jump / self.base_unfollow_probability  # zad11 to tez wtedy trzeba zmienic
+                car.jump = 0.1  # ZADANIE
                 cars_new.append(car)
         return cars_new
 
@@ -53,7 +53,7 @@ class Ancestors:
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
             # car.follow_path = [0]
-            car.jump = self.base_unfollow_probability ** len(car.follow_path)  #  zad11 np jako zadanie mozna to do napisania dac
+            car.jump = 0.1  # ZADANIE
 
     def save_path(self):
         """returns longest path from set of paths that can be followed by car"""
