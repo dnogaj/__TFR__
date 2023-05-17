@@ -19,9 +19,8 @@ from game.cars import PlayerCar, ComputerCar
 class Game:
     """Modulacja z funkcjami pygame -> dużo miesza bo razem z załadowaniem obrazka długi ciąg się robi"""
 
-    def __init__(self):
-        self.alg_speed = 10
-        self.alg_rotation = 10
+    alg_speed = 10
+    alg_rotation = 10
 
     @staticmethod
     def draw_static(window, images: list):
@@ -115,22 +114,23 @@ class Game:
             pygame.display.update()
             Game.exit_game()
             key = pygame.key.get_pressed()
-            if key[pygame.K_RETURN] and which_algo == 1:  # if keyboard.is_pressed("enter") and which_algo == 1:
+            if key[pygame.K_RETURN] and which_algo == 1:
                 Game.play_algo()
-            elif key[pygame.K_RETURN] and which_algo == 2:  # elif keyboard.is_pressed("enter") and which_algo == 2:
+            elif key[pygame.K_RETURN] and which_algo == 2:
                 Game.play_algo_v2()
-            elif key[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
+            elif key[pygame.K_ESCAPE]:
                 return False
 
-    def play_algo(self):
+    @staticmethod
+    def play_algo():
         """play_algo -> first algorithm that overcomes the track by itself"""
         run = True
         FPS = 300  # klatki na sekunde
         timer = pygame.time.Clock()  # tworzenie instancji zegara
         cars2 = []
         cars2.append(
-            ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
-                        max_velocity=self.alg_speed)
+            ComputerCar(rotation_vel=Game.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                        max_velocity=Game.alg_speed)
         )
         tre = Tre(1)
         stime = time.time()
@@ -147,14 +147,13 @@ class Game:
             #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
             #     time.sleep(0.5)
             cars2 = tre.next_step(cars2)
-            # print(cars2[0].colide)
             if len(cars2) < 1000:
                 cars2.append(
-                    ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
-                                max_velocity=self.alg_speed)
+                    ComputerCar(rotation_vel=Game.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                                max_velocity=Game.alg_speed)
                 )
             key = pygame.key.get_pressed()
-            if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+            if key[pygame.K_TAB]:
                 tre.save_path_to_file_pickle()
                 run = Game.exiting_game_algo(run)
 
@@ -209,25 +208,26 @@ class Game:
                         pygame.display.update()
                         Game.exit_game()
                         keys = pygame.key.get_pressed()
-                        if keys[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
+                        if keys[pygame.K_RETURN]:
                             Game.play_solo()
-                        elif keys[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
+                        elif keys[pygame.K_ESCAPE]:
                             run = False
-                if player_car[0].collide is not None or keys[pygame.K_TAB]:  # keyboard.is_pressed("tab"):
+                if player_car[0].collide is not None or keys[pygame.K_TAB]:
                     """This conditional statement defines what is doing when car collides band"""
                     while run:
                         Game.draw_static_info(window=gp.GAME_WINDOW, images=gp.IMAGES_AND_SIZES_DEAD)
                         pygame.display.update()
                         Game.exit_game()
                         keys = pygame.key.get_pressed()
-                        if keys[pygame.K_RETURN]:  # if keyboard.is_pressed("enter"):
+                        if keys[pygame.K_RETURN]:
                             Game.play_solo()
-                        elif keys[pygame.K_ESCAPE]:  # elif keyboard.is_pressed("esc"):
+                        elif keys[pygame.K_ESCAPE]:
                             run = False
 
             Game.exit_game()
 
-    def play_algo_v2(self):
+    @staticmethod
+    def play_algo_v2():
         """play_algo_v2 -> second algorithm that overcomes the track by itself"""
         ancestors = Ancestors()
 
@@ -238,8 +238,8 @@ class Game:
         cars2 = []
 
         for i in range(1000):
-            car = ComputerCar(rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
-                              max_velocity=self.alg_speed)
+            car = ComputerCar(rotation_vel=Game.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                              max_velocity=Game.alg_speed)
             cars2.append(car)
 
         time_counter = time.time()
@@ -260,13 +260,12 @@ class Game:
             #     player_cars.append(PlayerCar(rotation_vel=2, start_pos_y=200, start_pos_x=200))
             #     time.sleep(0.5)
             cars2 = ancestors.next_step(cars2)
-            # print(cars2[0].colide)
             if len(cars2) == 0:
                 for i in range(500):
                     cars2.append(
                         ComputerCar(
-                            rotation_vel=self.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
-                            max_velocity=self.alg_speed
+                            rotation_vel=Game.alg_rotation, start_pos_y=380 - 50, start_pos_x=750,
+                            max_velocity=Game.alg_speed
                         )
                     )
                 # print(ancestors.set_of_sets_all)
@@ -279,6 +278,6 @@ class Game:
                     pygame.quit()
                     sys.exit()
             key = pygame.key.get_pressed()
-            if key[pygame.K_TAB]:  # if keyboard.is_pressed("tab"):
+            if key[pygame.K_TAB]:
                 ancestors.save_path_file_pickle()
                 run = Game.exiting_game_algo(run, which_algo=2)
