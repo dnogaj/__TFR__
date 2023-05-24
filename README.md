@@ -27,6 +27,8 @@ We intend to create an interface that will show the operation of the heuristic a
 16.05 - finishing project <br />
 
 ## Have a quick glance at some screenshots that show our work: <br />
+![mainmenu](https://github.com/jd-kowal/__TFR__/assets/94318576/919cc227-2ba8-43b9-89f0-158927f16515)
+![optionsmenu](https://github.com/jd-kowal/__TFR__/assets/94318576/5e93835b-d543-44c5-a051-7ec9ba230276)
 ![algo_run](https://github.com/jd-kowal/__TFR__/assets/94318576/f866778b-67dc-40b1-8fa1-dd0ca561abca)
 ![algo_almost](https://github.com/jd-kowal/__TFR__/assets/94318576/756ca3a4-ca93-4cda-b152-e1921c1daab7)
 ![whole_car_algo](https://github.com/jd-kowal/__TFR__/assets/94318576/661b8f65-496e-4091-b8dd-224363cd7363)
