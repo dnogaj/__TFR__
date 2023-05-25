@@ -7,7 +7,7 @@ class Tre:
         self.right = None
         self.left = None
         self.data = data
-        self.strength_path = 1 # ZADANIE
+        self.strength_path = 1 # ZADANIE zmienna na wartosc ktora bedzie modyfikowac sciezke
 
     def load_old_tree(self):
         if os.path.exists("tre_left.pkl") and os.path.exists("tre_right.pkl"):
@@ -45,9 +45,9 @@ class Tre:
         # print(self.left.data)
         # print(self.right.data)
         if decision == -1:
-            self.left.data = 1  # ZADANIE
+            self.left.data = 1  # ZADANIE tu zmienamy sciezke kiedy mrowka zostawia slad
         elif decision == 1:
-            self.right.data = 1  # ZADANIE
+            self.right.data = 1  # ZADANIE to samo tylko jak jedzie w prawo
         return decision
 
 
@@ -77,10 +77,10 @@ class Tre:
             next_node = path.pop(0)
             if next_node == -1:
                 self.left.purge_path(path)
-                self.data = 1  # ZADANIE
+                self.data = 1  # ZADANIE tu zmieniamy sciezke kiedy mrowka zginie
             elif next_node == 1:
                 self.right.purge_path(path)
-                self.data = 1  # ZADANIE
+                self.data = 1  # ZADANIE tu tez :>
 
     def save_path(self):
         if self.left is None or self.right is None:
