@@ -8,9 +8,9 @@ class Ancestors:
         self.set_of_sets_all = []
         self.set_of_sets = []
 
-        self.max_sets = 500  # ZADANIE ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
+        self.max_sets = 50  # ZADANIE ustawic to i base_unfollow_probability tak zeby w 20 cyklach dojechac do lewej na dole
         # a wogle to jest max ilosc sciezek za ktorymi mozna podozac
-        self.base_unfollow_probability = 0.1  # ZADANIE u mnie to byla szansa na zejscie ze sciezki na jej koncu ale mozna dac tu co innego
+        self.base_unfollow_probability = 4/5  # ZADANIE u mnie to byla szansa na zejscie ze sciezki na jej koncu ale mozna dac tu co innego
 
     def next_step(self, cars):
         """foreach car in cars if car colides we delete it else decision funcion is called"""
@@ -22,7 +22,7 @@ class Ancestors:
             else:
                 self.decide(car)  # sets car turn
                 car.path.append(car.turn)
-                car.jump = 0.1  # ZADANIE ustawiamy szanse na zejscie ze sciezki w kolejnych krokach
+                car.jump = car.jump / self.base_unfollow_probability # ZADANIE ustawiamy szanse na zejscie ze sciezki w kolejnych krokach
                 cars_new.append(car)
         return cars_new
 
@@ -54,7 +54,7 @@ class Ancestors:
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
             # car.follow_path = [0]
-            car.jump = 0.1  # ZADANIE szansa na zjechanie ze sciezki na początku
+            car.jump = car.jump = self.base_unfollow_probability ** len(car.follow_path)  # ZADANIE4 szansa na zjechanie ze sciezki na początku
 
     def save_path(self):
         """returns longest path from set of paths that can be followed by car"""
