@@ -54,7 +54,7 @@ class Ancestors:
         for car in cars:
             car.follow_path = random.choice(self.set_of_sets)
             # car.follow_path = [0]
-            car.jump = car.jump = self.base_unfollow_probability ** len(car.follow_path)  # ZADANIE4 szansa na zjechanie ze sciezki na początku
+            car.jump = self.base_unfollow_probability ** len(car.follow_path)  # ZADANIE4 szansa na zjechanie ze sciezki na początku
 
     def save_path(self):
         """returns longest path from set of paths that can be followed by car"""
